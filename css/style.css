@@ -40,6 +40,7 @@ a:focus {
     max-width: 1366px;
     margin: 0 auto;
     background: #ffffff;
+    overflow: hidden; /* Prevent horizontal overflow */
 }
 
 .back-to-top {
@@ -71,30 +72,30 @@ a:focus {
     transition: .2s;
 }
 
-
 /**********************************/
 /********** Top Bar CSS ***********/
 /**********************************/
 .top-bar {
     position: relative;
-    height: 90px;
+    height: auto; /* Allow height to adjust */
     background: #ffffff;
     display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 10px 20px; /* Reduce padding for smaller screens */
 }
 
 .top-bar .logo {
     padding: 15px 0;
-    text-align: left;
-    overflow: hidden;
+    text-align: center; /* Center logo on smaller screens */
+    width: 100%; /* Full width on smaller screens */
 }
 
 .top-bar .logo h1 {
     margin: 0;
     color: #23c453;
-    font-size: 40px;
+    font-size: 30px; /* Reduce font size for smaller screens */
     line-height: 35px;
     font-weight: 700;
 }
@@ -108,6 +109,8 @@ a:focus {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    width: 100%; /* Full width on smaller screens */
+    margin: 10px 0; /* Add margin between items */
 }
 
 .top-bar .top-bar-icon {
@@ -120,7 +123,7 @@ a:focus {
 .top-bar .top-bar-icon [class^="flaticon-"]::before {
     margin: 0;
     color: #23c453;
-    font-size: 40px;
+    font-size: 30px; /* Reduce icon size for smaller screens */
 }
 
 .top-bar .top-bar-text {
@@ -130,55 +133,56 @@ a:focus {
 .top-bar .top-bar-text h3 {
     margin: 0 0 5px 0;
     color: #23c453;
-    font-size: 16px;
+    font-size: 14px; /* Reduce font size for smaller screens */
     font-weight: 400;
 }
 
 .top-bar .top-bar-text p {
     margin: 0;
     color: #23c453;
-    font-size: 13px;
+    font-size: 12px; /* Reduce font size for smaller screens */
     font-weight: 400;
 }
 
 .top-bar .top-bar-text p a {
-    color: #23c453; /* Default color */
-    text-decoration: none; /* No underline by default */
-    transition: color 0.3s; /* Smooth transition for color change */
+    color: #23c453;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
 .top-bar .top-bar-text p a:hover {
-    color: #030f27; /* Change this to your desired hover color */
-    text-decoration: underline; /* Optional: Adds underline on hover */
+    color: #030f27;
+    text-decoration: underline;
 }
 
-
-/* Styling for phone numbers to stack vertically */
 .top-bar .top-bar-text .phone-numbers {
-    display: block; /* Ensures phone numbers are stacked vertically */
+    display: block;
 }
 
 .top-bar .top-bar-text .phone-numbers a {
-    display: block; /* Make each phone number take a full line */
-    margin-bottom: 5px; /* Space between phone numbers */
+    display: block;
+    margin-bottom: 5px;
     color: #23c453;
-    font-size: 13px;
+    font-size: 12px; /* Reduce font size for smaller screens */
     text-decoration: none;
 }
 
 .top-bar .top-bar-text .phone-numbers a:hover {
-    color: #007BFF; /* Optional: Add a hover effect */
+    color: #007BFF;
 }
 
-@media (min-width: 992px) {
+@media (max-width: 768px) {
     .top-bar {
-        padding: 0 60px;
+        flex-direction: column; /* Stack items vertically */
+        padding: 10px;
     }
-}
 
-@media (max-width: 991.98px) {
-    .top-bar .logo {
-        text-align: center;
+    .top-bar .logo h1 {
+        font-size: 24px; /* Further reduce font size for mobile */
+    }
+
+    .top-bar .top-bar-item {
+        justify-content: center; /* Center items on mobile */
     }
 }
 
@@ -243,48 +247,24 @@ a:focus {
     border-color: #3ac74d;
 }
 
-@media (min-width: 992px) {
-    .nav-bar {
-        padding: 0 75px;
-    }
-    
-    .nav-bar.nav-sticky {
-        padding: 0;
-    }
-    
-    .nav-bar .navbar {
-        padding: 20px;
-    }
-    
-    .nav-bar .navbar-brand {
-        display: none;
-    }
-    
-    .nav-bar a.nav-link {
-        padding: 8px 15px;
-        font-size: 15px;
-        text-transform: uppercase;
-    }
-}
-
 @media (max-width: 991.98px) {
     .nav-bar .navbar {
-        padding: 15px;
+        padding: 10px; /* Reduce padding for smaller screens */
     }
-    
+
     .nav-bar a.nav-link {
         padding: 5px;
+        font-size: 14px; /* Reduce font size for smaller screens */
     }
-    
+
     .nav-bar .dropdown-menu {
         box-shadow: none;
     }
-    
+
     .nav-bar .btn {
-        display: none;
+        display: none; /* Hide buttons on smaller screens */
     }
 }
-
 
 /*******************************/
 /******** Carousel CSS *********/
@@ -292,8 +272,8 @@ a:focus {
 .carousel {
     position: relative;
     width: 100%;
-    height: calc(100vh - 170px);
-    min-height: 400px;
+    height: auto; /* Allow height to adjust */
+    min-height: 300px; /* Reduce min-height for smaller screens */
     margin: 0 auto;
     text-align: center;
     overflow: hidden;
@@ -308,7 +288,7 @@ a:focus {
 
 .carousel .carousel-item img {
     width: 100%;
-    height: 100%;
+    height: auto; /* Allow height to adjust */
     object-fit: cover;
 }
 
@@ -325,33 +305,33 @@ a:focus {
 
 .carousel .carousel-caption {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: calc(100vh - 170px);
-    min-height: 400px;
+    text-align: center;
 }
 
 .carousel .carousel-caption p {
     color: #ffffff;
-    font-size: 30px;
-    margin-bottom: 15px;
+    font-size: 20px; /* Reduce font size for smaller screens */
+    margin-bottom: 10px;
     letter-spacing: 1px;
 }
 
 .carousel .carousel-caption h1 {
     color: #ffffff;
-    font-size: 60px;
+    font-size: 40px; /* Reduce font size for smaller screens */
     font-weight: 700;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 }
 
 .carousel .carousel-caption .btn {
-    padding: 15px 35px;
-    font-size: 18px;
+    padding: 10px 20px; /* Reduce padding for smaller screens */
+    font-size: 16px; /* Reduce font size for smaller screens */
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -370,45 +350,18 @@ a:focus {
 
 @media (max-width: 767.98px) {
     .carousel .carousel-caption h1 {
-        font-size: 40px;
-        font-weight: 700;
+        font-size: 30px; /* Further reduce font size for mobile */
     }
-    
+
     .carousel .carousel-caption p {
-        font-size: 20px;
+        font-size: 16px; /* Further reduce font size for mobile */
     }
-    
+
     .carousel .carousel-caption .btn {
-        padding: 12px 30px;
-        font-size: 18px;
-        font-weight: 500;
-        letter-spacing: 0;
+        padding: 8px 16px; /* Further reduce padding for mobile */
+        font-size: 14px; /* Further reduce font size for mobile */
     }
 }
-
-@media (max-width: 575.98px) {
-    .carousel .carousel-caption h1 {
-        font-size: 30px;
-        font-weight: 500;
-    }
-    
-    .carousel .carousel-caption p {
-        font-size: 16px;
-    }
-    
-    .carousel .carousel-caption .btn {
-        padding: 10px 25px;
-        font-size: 16px;
-        font-weight: 400;
-        letter-spacing: 0;
-    }
-}
-
-.carousel .animated {
-    -webkit-animation-duration: 1.5s;
-    animation-duration: 1.5s;
-}
-
 
 /*******************************/
 /******* Page Header CSS *******/
