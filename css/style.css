@@ -40,7 +40,6 @@ a:focus {
     max-width: 1366px;
     margin: 0 auto;
     background: #ffffff;
-    overflow: hidden; /* Prevent horizontal overflow */
 }
 
 .back-to-top {
@@ -72,30 +71,30 @@ a:focus {
     transition: .2s;
 }
 
+
 /**********************************/
 /********** Top Bar CSS ***********/
 /**********************************/
 .top-bar {
     position: relative;
-    height: auto; /* Allow height to adjust */
+    height: 90px;
     background: #ffffff;
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /* Reduce padding for smaller screens */
+    padding: 0 20px;
 }
 
 .top-bar .logo {
     padding: 15px 0;
-    text-align: center; /* Center logo on smaller screens */
-    width: 100%; /* Full width on smaller screens */
+    text-align: left;
+    overflow: hidden;
 }
 
 .top-bar .logo h1 {
     margin: 0;
     color: #23c453;
-    font-size: 30px; /* Reduce font size for smaller screens */
+    font-size: 40px;
     line-height: 35px;
     font-weight: 700;
 }
@@ -109,8 +108,6 @@ a:focus {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 100%; /* Full width on smaller screens */
-    margin: 10px 0; /* Add margin between items */
 }
 
 .top-bar .top-bar-icon {
@@ -123,7 +120,7 @@ a:focus {
 .top-bar .top-bar-icon [class^="flaticon-"]::before {
     margin: 0;
     color: #23c453;
-    font-size: 30px; /* Reduce icon size for smaller screens */
+    font-size: 40px;
 }
 
 .top-bar .top-bar-text {
@@ -133,56 +130,55 @@ a:focus {
 .top-bar .top-bar-text h3 {
     margin: 0 0 5px 0;
     color: #23c453;
-    font-size: 14px; /* Reduce font size for smaller screens */
+    font-size: 16px;
     font-weight: 400;
 }
 
 .top-bar .top-bar-text p {
     margin: 0;
     color: #23c453;
-    font-size: 12px; /* Reduce font size for smaller screens */
+    font-size: 13px;
     font-weight: 400;
 }
 
 .top-bar .top-bar-text p a {
-    color: #23c453;
-    text-decoration: none;
-    transition: color 0.3s;
+    color: #23c453; /* Default color */
+    text-decoration: none; /* No underline by default */
+    transition: color 0.3s; /* Smooth transition for color change */
 }
 
 .top-bar .top-bar-text p a:hover {
-    color: #030f27;
-    text-decoration: underline;
+    color: #030f27; /* Change this to your desired hover color */
+    text-decoration: underline; /* Optional: Adds underline on hover */
 }
 
+
+/* Styling for phone numbers to stack vertically */
 .top-bar .top-bar-text .phone-numbers {
-    display: block;
+    display: block; /* Ensures phone numbers are stacked vertically */
 }
 
 .top-bar .top-bar-text .phone-numbers a {
-    display: block;
-    margin-bottom: 5px;
+    display: block; /* Make each phone number take a full line */
+    margin-bottom: 5px; /* Space between phone numbers */
     color: #23c453;
-    font-size: 12px; /* Reduce font size for smaller screens */
+    font-size: 13px;
     text-decoration: none;
 }
 
 .top-bar .top-bar-text .phone-numbers a:hover {
-    color: #007BFF;
+    color: #007BFF; /* Optional: Add a hover effect */
 }
 
-@media (max-width: 768px) {
+@media (min-width: 992px) {
     .top-bar {
-        flex-direction: column; /* Stack items vertically */
-        padding: 10px;
+        padding: 0 60px;
     }
+}
 
-    .top-bar .logo h1 {
-        font-size: 24px; /* Further reduce font size for mobile */
-    }
-
-    .top-bar .top-bar-item {
-        justify-content: center; /* Center items on mobile */
+@media (max-width: 991.98px) {
+    .top-bar .logo {
+        text-align: center;
     }
 }
 
@@ -247,24 +243,48 @@ a:focus {
     border-color: #3ac74d;
 }
 
+@media (min-width: 992px) {
+    .nav-bar {
+        padding: 0 75px;
+    }
+    
+    .nav-bar.nav-sticky {
+        padding: 0;
+    }
+    
+    .nav-bar .navbar {
+        padding: 20px;
+    }
+    
+    .nav-bar .navbar-brand {
+        display: none;
+    }
+    
+    .nav-bar a.nav-link {
+        padding: 8px 15px;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+}
+
 @media (max-width: 991.98px) {
     .nav-bar .navbar {
-        padding: 10px; /* Reduce padding for smaller screens */
+        padding: 15px;
     }
-
+    
     .nav-bar a.nav-link {
         padding: 5px;
-        font-size: 14px; /* Reduce font size for smaller screens */
     }
-
+    
     .nav-bar .dropdown-menu {
         box-shadow: none;
     }
-
+    
     .nav-bar .btn {
-        display: none; /* Hide buttons on smaller screens */
+        display: none;
     }
 }
+
 
 /*******************************/
 /******** Carousel CSS *********/
@@ -272,8 +292,8 @@ a:focus {
 .carousel {
     position: relative;
     width: 100%;
-    height: auto; /* Allow height to adjust */
-    min-height: 300px; /* Reduce min-height for smaller screens */
+    height: calc(100vh - 170px);
+    min-height: 400px;
     margin: 0 auto;
     text-align: center;
     overflow: hidden;
@@ -288,7 +308,7 @@ a:focus {
 
 .carousel .carousel-item img {
     width: 100%;
-    height: auto; /* Allow height to adjust */
+    height: 100%;
     object-fit: cover;
 }
 
@@ -305,33 +325,33 @@ a:focus {
 
 .carousel .carousel-caption {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    text-align: center;
+    height: calc(100vh - 170px);
+    min-height: 400px;
 }
 
 .carousel .carousel-caption p {
     color: #ffffff;
-    font-size: 20px; /* Reduce font size for smaller screens */
-    margin-bottom: 10px;
+    font-size: 30px;
+    margin-bottom: 15px;
     letter-spacing: 1px;
 }
 
 .carousel .carousel-caption h1 {
     color: #ffffff;
-    font-size: 40px; /* Reduce font size for smaller screens */
+    font-size: 60px;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
 }
 
 .carousel .carousel-caption .btn {
-    padding: 10px 20px; /* Reduce padding for smaller screens */
-    font-size: 16px; /* Reduce font size for smaller screens */
+    padding: 15px 35px;
+    font-size: 18px;
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -350,18 +370,45 @@ a:focus {
 
 @media (max-width: 767.98px) {
     .carousel .carousel-caption h1 {
-        font-size: 30px; /* Further reduce font size for mobile */
+        font-size: 40px;
+        font-weight: 700;
     }
-
+    
     .carousel .carousel-caption p {
-        font-size: 16px; /* Further reduce font size for mobile */
+        font-size: 20px;
     }
-
+    
     .carousel .carousel-caption .btn {
-        padding: 8px 16px; /* Further reduce padding for mobile */
-        font-size: 14px; /* Further reduce font size for mobile */
+        padding: 12px 30px;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 0;
     }
 }
+
+@media (max-width: 575.98px) {
+    .carousel .carousel-caption h1 {
+        font-size: 30px;
+        font-weight: 500;
+    }
+    
+    .carousel .carousel-caption p {
+        font-size: 16px;
+    }
+    
+    .carousel .carousel-caption .btn {
+        padding: 10px 25px;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+}
+
+.carousel .animated {
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
+
 
 /*******************************/
 /******* Page Header CSS *******/
@@ -2229,43 +2276,47 @@ a:focus {
 .footer p a:hover {
     color: #25d366; /* Change this to your desired hover color */
     
-}
+};
 
-.sticky_container {
+/* .sticky_container {
     position: fixed; /* Keeps the button in view */
-    bottom: 80px; /* Distance from the bottom */
-    right: 20px; /* Distance from the right */
-    display: flex;
+    /* bottom: 80px; /* Distance from the bottom */
+    /* right: 20px; /* Distance from the right */
+    /* display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Ensures it stays above other content */
-    left: 91.5%;
+    /* left: 91.5%;
     transform: translateX(-50%)
 }
 
 .whatsapp_btn {
-    width: 60px; /* Default size */
-    height: auto; /* Maintain aspect ratio */
-    position: block ;
-    background-color: #25d366;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
+    width: 10rem;
     height: auto;
-    width: 225px;
+    position: fixed;
+    bottom: 2rem;
+    right: -3.5rem;
+    z-index: 1000;
+    transition: transform 0.3s ease;
 }
 
-/* Media Queries for responsiveness */
-@media (max-width: 768px) {
+.whatsapp_btn:hover {
+    transform: scale(1.1);
+}
+
+/* Adjust for tablets */
+/* @media (max-width: 768px) {
     .whatsapp_btn {
-        width: 150px; /* Smaller size for tablets and mobiles */
+        width: 3.5rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
     }
 }
 
-@media (max-width: 480px) {
+/* Adjust for mobile phones */
+/* @media (max-width: 480px) {
     .whatsapp_btn {
-        width: 70px; /* Smaller size for mobile phones */
-    }
-};
+        width: 1rem;
+        bottom: 1rem;
+        right: 1rem;
+    } */ 
