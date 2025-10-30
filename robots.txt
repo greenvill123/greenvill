@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.greenvillassociates.com/sitemap.xml
+
+# Disallow admin or private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /assets/scripts/
+Disallow: /assets/styles/
+
+# Allow important pages
+Allow: /index.html
+Allow: /construction.html
+Allow: /assets/images/

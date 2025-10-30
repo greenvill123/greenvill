@@ -1,0 +1,116 @@
+/* --- Footer Base --- */
+.footer {
+  width: 100%;
+  background: var(--navy);
+  color: var(--white);
+  padding: 3rem 1rem;
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin-top: 0; /* remove auto so it won't misalign inside flex containers */
+}
+
+/* --- Footer Layout --- */
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto; /* centers inner content only */
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* --- Footer Columns --- */
+.footer-column {
+  flex: 1;
+  min-width: 260px;
+  padding: 1rem;
+}
+
+/* --- Footer Text + Headings --- */
+.footer-column h4 {
+  font-family: Montserrat, sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.footer-column p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+/* --- Links --- */
+.footer-column a {
+  color: var(--white);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-column a:hover {
+  color: var(--green);
+}
+
+/* --- Map --- */
+.footer-map {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  background: var(--white);
+  margin-top: 1rem;
+}
+
+.footer-map::before {
+  content: '';
+  display: block;
+  padding-top: 56.25%; /* maintains 16:9 aspect ratio */
+}
+
+.footer-map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(0.2) contrast(1.2);
+  transition: var(--transition);
+}
+
+.footer-map iframe:hover {
+  filter: grayscale(0) contrast(1);
+}
+
+/* --- Copyright --- */
+.footer-copyright {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 2rem;
+}
+
+.footer-copyright a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-column {
+    min-width: 100%;
+  }
+}
