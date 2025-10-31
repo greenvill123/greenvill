@@ -29,7 +29,8 @@ body{
   color:var(--navy);
   -webkit-font-smoothing:antialiased;
   line-height: 1.6;
-  overflow-x: hidden;
+  /* prevent page-level horizontal scrolling */
+  overflow-x: hidden !important;
   overflow-y: auto;
   width: 100%;
 }
@@ -50,7 +51,7 @@ body{
 }
 
 .header-inner{display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;flex-direction:column}
+.brand{display:flex;flex-direction:column;flex:0 1 auto;min-width:0}
 .logo{font-family:Montserrat, sans-serif;font-weight:700;color:var(--navy);font-size:1.35rem}
 .logo-accent{color:var(--green)}
 .tag{color:var(--muted);font-size:0.85rem}
@@ -325,7 +326,6 @@ body{
 .comparison-table{
   background: var(--white);
   border-radius: var(--border-radius-lg);
-  overflow: hidden;
   box-shadow: var(--card-shadow);
   margin-top: 2rem;
 }
@@ -358,6 +358,105 @@ body{
 
 .comparison-row:last-child{
   border-bottom: none;
+}
+
+/* Mobile-friendly comparison table */
+@media (max-width: 768px) {
+  .comparison-table {
+    background: none;
+    box-shadow: none;
+    padding: 0.5rem;
+  }
+  
+  .comparison-header {
+    display: none; /* Hide header on mobile, we'll use data-labels instead */
+  }
+  
+  .comparison-row {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Card hover effect */
+  .comparison-row:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--green);
+  }
+  
+  /* Loan type header styling */
+  .comparison-cell:first-child {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    background: var(--gradient-light);
+    border-bottom: 2px solid var(--border);
+    padding: 1.2rem 1.25rem;
+  }
+  
+  .comparison-cell:first-child::before {
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  .comparison-cell {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .comparison-cell::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  
+  /* Value styling */
+  .comparison-cell > :not(:first-child) {
+    color: var(--navy);
+    font-weight: 500;
+  }
+  
+  /* Action button container */
+  .comparison-cell:last-child {
+    border-bottom: none;
+    background: var(--gradient-light);
+    padding: 1.25rem;
+    margin-top: 0.5rem;
+  }
+  
+  .comparison-cell:last-child::before {
+    display: none; /* Hide label for action button */
+  }
+  
+  /* Action button styling */
+  .comparison-cell .btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .comparison-cell .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(15,194,122,0.3);
+  }
 }
 
 /* Bank Slider Section */
@@ -465,18 +564,44 @@ body{
   gap: 2rem;
   overflow: hidden;
   padding: 2rem 0;
+  /* default: desktop auto-scroll animation */
   animation: slideTestimonials 40s linear infinite;
   width: 200%;
+  align-items: stretch;
 }
 
+/* Fix testimonial card size on desktop so cards are consistent and readable */
+@media (min-width: 1001px) {
+  .testimonials-slider { justify-content: center; }
+  .testimonial-card { flex: 0 0 320px; max-width: 360px; min-width: 300px; }
+}
+
+/* Pause the auto-scroll on hover for desktop users */
+.testimonials-slider:hover{animation-play-state: paused}
+
 .testimonial-card{
-    background: var(--white);
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), var(--white));
     padding: 2rem;
   border-radius: var(--border-radius-lg);
   box-shadow: var(--card-shadow);
-  min-width: 350px;
+  min-width: 360px;
   transition: var(--transition);
   position: relative;
+  border-left: 6px solid var(--green);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  border-top-left-radius: var(--border-radius-lg);
+  border-top-right-radius: var(--border-radius-lg);
+  background: var(--gradient);
 }
 
 .testimonial-card:hover{
@@ -729,7 +854,7 @@ body{
   padding: 0.8rem 1rem;
   border: 1px solid var(--border);
   border-radius: 8px;
-    font-size: 1rem;
+  font-size: 1rem;
   transition: var(--transition);
 }
 
@@ -935,8 +1060,90 @@ a:focus,.btn:focus{outline:3px solid rgba(15,194,122,0.18);outline-offset:3px}
   .comparison-header,
   .comparison-row{grid-template-columns: 2fr 1fr 1fr 1fr 1fr}
   .hero-stats{flex-direction: column; gap: 1rem;}
-  .testimonials-slider{flex-direction: column;}
-  .testimonial-card{min-width: auto;}
+  /* On medium screens switch testimonials to a horizontal swipeable slider (no auto-animation) */
+  .testimonials-slider{
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    animation: none;
+    width: auto;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+  .testimonial-card{
+    min-width: 80%;
+    max-width: 420px;
+    scroll-snap-align: center;
+  }
+  .testimonials-nav{display:none}
+}
+
+/* Mobile/Small screens ensure cards don't overflow horizontally */
+@media (max-width: 480px){
+  .testimonials-slider { gap: 1rem; padding: 0 0.5rem; }
+  .testimonial-card { min-width: 88%; max-width: 360px; }
+}
+
+/* Mobile navigation styles */
+.mobile-nav-toggle{
+  display: none;
+  background: transparent;
+  border: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.mobile-nav-toggle .hamburger{width:22px;height:2px;background:var(--navy);position:relative;display:block}
+.mobile-nav-toggle .hamburger::before, .mobile-nav-toggle .hamburger::after{content:'';position:absolute;left:0;width:22px;height:2px;background:var(--navy);transition:var(--transition)}
+.mobile-nav-toggle .hamburger::before{top:-7px}
+.mobile-nav-toggle .hamburger::after{top:7px}
+
+/* When mobile menu open change hamburger to X */
+.mobile-nav-toggle.open .hamburger{background:transparent}
+.mobile-nav-toggle.open .hamburger::before{transform: rotate(45deg); top:0}
+.mobile-nav-toggle.open .hamburger::after{transform: rotate(-45deg); top:0}
+
+/* Mobile nav panel (hidden by default) */
+body.mobile-nav-open .nav{
+  display: block !important;
+  position: fixed;
+  /* top is set dynamically by JS to match header height */
+  top: var(--header-height, 72px);
+  right: 0;
+  left: 0;
+  background: var(--white);
+  padding: 1.25rem 1rem;
+  box-shadow: 0 12px 30px rgba(6,39,59,0.12);
+  z-index: 1200;
+  border-top: 1px solid var(--border);
+  max-height: calc(100vh - var(--header-height, 72px));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+body.mobile-nav-open .nav .nav-link{
+  display: block;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+body.mobile-nav-open .nav .nav-link:hover{
+  background: var(--gradient-light);
+  color: var(--green);
+}
+body.mobile-nav-open .nav .nav-cta{
+  display: inline-block;
+  margin-top: 0.75rem;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px){
+  .mobile-nav-toggle{display:flex}
+  .nav{display:none}
+  .header-inner{align-items:center}
 }
 
 @media (max-width: 768px){
@@ -951,6 +1158,8 @@ a:focus,.btn:focus{outline:3px solid rgba(15,194,122,0.18);outline-offset:3px}
   .footer-content{flex-direction: column; text-align: center;}
   .hero-stats{flex-direction: row; flex-wrap: wrap; gap: 1rem;}
   .stat{flex: 1; min-width: 120px;}
+  /* Tweak testimonials for smaller tablets */
+  .testimonial-card{min-width: 85%; max-width: 480px;}
 }
 
 @media (max-width: 480px){
@@ -961,6 +1170,22 @@ a:focus,.btn:focus{outline:3px solid rgba(15,194,122,0.18);outline-offset:3px}
   .testimonial-card{padding: 1.5rem}
   .calculator-panel{padding: 1.5rem}
   .hero-form{padding: 1.5rem}
+  /* Very small screens - ensure testimonials fit comfortably */
+  .testimonial-card{min-width: 90%; max-width: 420px}
+}
+
+/* Large desktops */
+@media (min-width: 1600px){
+  .container{max-width:1400px}
+  .hero-copy h1{font-size:3rem}
+  .testimonials-slider{gap:3rem}
+  .testimonial-card{min-width:420px}
+}
+
+/* Very small phones */
+@media (max-width: 360px){
+  .hero-copy h1{font-size:1.6rem}
+  .testimonial-card{padding:1rem; min-width: 95%}
 }
 
 /* Animation Classes */
@@ -1026,3 +1251,206 @@ a:focus,.btn:focus{outline:3px solid rgba(15,194,122,0.18);outline-offset:3px}
 .p-1{padding: 0.5rem;}
 .p-2{padding: 1rem;}
 .p-3{padding: 1.5rem;}
+
+/*
+
+/* =========================================================
+   🔹 Extended Responsive Enhancements for All Screen Sizes
+   ========================================================= */
+
+/* 🖥️ Extra Large Screens (≥1600px) */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1400px;
+  }
+  .hero-copy h1 {
+    font-size: 3rem;
+  }
+  .loan-services h2,
+  .loan-comparison h2,
+  .testimonials h2,
+  .faq h2,
+  .emi-calculator-section h2 {
+    font-size: 2.5rem;
+  }
+  .service-card {
+    padding: 2.5rem;
+  }
+  .footer {
+    padding: 3rem 0 1.5rem;
+  }
+}
+
+/* 💻 Large Screens (1200px – 1599px) */
+@media (max-width: 1599px) {
+  .hero-grid {
+    grid-template-columns: 1fr 340px;
+    gap: 2.5rem;
+  }
+  .hero-copy h1 {
+    font-size: 2.3rem;
+  }
+  .service-card {
+    padding: 1.8rem;
+  }
+  .loan-services h2 {
+    font-size: 2rem;
+  }
+  .comparison-table {
+    font-size: 0.95rem;
+  }
+}
+
+/* 🧭 Medium Laptops / Tablets Landscape (992px – 1199px) */
+@media (max-width: 1199px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hero-form {
+    position: static;
+    margin-top: 2rem;
+  }
+  .services-list {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .loan-services h2,
+  .loan-comparison h2 {
+    font-size: 2rem;
+  }
+  .footer-content {
+    gap: 1.5rem;
+  }
+}
+
+/* 📱 Tablets Portrait (768px – 991px) */
+@media (max-width: 991px) {
+  .nav {
+    display: none;
+  }
+  .hero {
+    padding: 4rem 0 2rem;
+  }
+  .hero-copy h1 {
+    font-size: 2rem;
+  }
+  .lead {
+    font-size: 1rem;
+  }
+  .hero-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .services-list {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .comparison-header,
+  .comparison-row {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-column {
+    min-width: 100%;
+  }
+}
+
+/* 📲 Mobile Large (576px – 767px) */
+@media (max-width: 767px) {
+  .container {
+    padding: 0 0.8rem;
+  }
+  /* Keep header elements on one line so the hamburger stays to the right of the brand
+     Prevent wrapping to a second line which pushes the hamburger below the company name */
+  .header-inner {
+    flex-direction: row;
+    gap: 0.6rem;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .hero {
+    margin-top: 64px;
+    padding: 3rem 0;
+  }
+  .hero-copy h1 {
+    font-size: 1.8rem;
+  }
+  .hero-stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+  .comparison-header,
+  .comparison-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .calculator-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer {
+    padding: 2rem 0 1rem;
+  }
+  .footer-content {
+    text-align: center;
+  }
+}
+
+/* 📱 Mobile Medium (480px – 575px) */
+@media (max-width: 575px) {
+  .hero-copy h1 {
+    font-size: 1.6rem;
+  }
+  .lead {
+    font-size: 0.95rem;
+  }
+  .btn,
+  .nav-cta {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+  .service-card,
+  .testimonial-card,
+  .calculator-panel {
+    padding: 1.2rem;
+  }
+  .footer {
+    border-radius: 0;
+  }
+}
+
+/* 📞 Smallest Devices (≤400px) */
+@media (max-width: 400px) {
+  .container {
+    padding: 0 0.6rem;
+  }
+  .hero {
+    padding: 2rem 0;
+  }
+  .hero-copy h1 {
+    font-size: 1.4rem;
+  }
+  .loan-services h2 {
+    font-size: 1.5rem;
+  }
+  .footer {
+    padding: 1.5rem 0 1rem;
+  }
+  .footer-column h4 {
+    font-size: 1rem;
+  }
+  .footer-column p {
+    font-size: 0.9rem;
+  }
+}
