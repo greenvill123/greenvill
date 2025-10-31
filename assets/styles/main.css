@@ -1106,6 +1106,17 @@ a:focus,.btn:focus{outline:3px solid rgba(15,194,122,0.18);outline-offset:3px}
 .mobile-nav-toggle.open .hamburger::before{transform: rotate(45deg); top:0}
 .mobile-nav-toggle.open .hamburger::after{transform: rotate(-45deg); top:0}
 
+/* Mobile navigation breakpoint */
+@media (max-width: 768px) {
+  .mobile-nav-toggle {
+    display: flex;
+  }
+  
+  .nav {
+    display: none;
+  }
+}
+
 /* Mobile nav panel (hidden by default) */
 body.mobile-nav-open .nav{
   display: block !important;
