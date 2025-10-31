@@ -177,9 +177,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".mobile-nav-toggle");
     const nav = document.querySelector(".nav");
     const header = document.querySelector(".header");
-    if (!toggle || !nav || !header) return;
 
-    toggle.addEventListener("click", function () {
+    if (!toggle || !nav || !header) {
+      console.error("Mobile navigation elements not found");
+      return;
+    }
+
+    function toggleMenu(event) {
+      event.preventDefault();
       const isOpen = document.body.classList.contains("mobile-nav-open");
 
       if (isOpen) {
@@ -191,7 +196,12 @@ document.addEventListener("DOMContentLoaded", function () {
         toggle.classList.add("open");
         toggle.setAttribute("aria-expanded", "true");
       }
-    });
+    }
+
+    // Remove any existing event listeners
+    toggle.removeEventListener("click", toggleMenu);
+    // Add new click event listener
+    toggle.addEventListener("click", toggleMenu);
 
     // compute and set nav top position to match header height
     function setNavTop() {
