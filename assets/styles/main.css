@@ -1095,40 +1095,66 @@ a:focus,.btn:focus{outline:3px solid rgba(15,194,122,0.18);outline-offset:3px}
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
 }
-.mobile-nav-toggle .hamburger{width:22px;height:2px;background:var(--navy);position:relative;display:block}
-.mobile-nav-toggle .hamburger::before, .mobile-nav-toggle .hamburger::after{content:'';position:absolute;left:0;width:22px;height:2px;background:var(--navy);transition:var(--transition)}
-.mobile-nav-toggle .hamburger::before{top:-7px}
-.mobile-nav-toggle .hamburger::after{top:7px}
+
+.mobile-nav-toggle .hamburger{
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  position: relative;
+  display: block;
+  transition: var(--transition);
+}
+
+.mobile-nav-toggle .hamburger::before,
+.mobile-nav-toggle .hamburger::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  transition: var(--transition);
+}
+
+.mobile-nav-toggle .hamburger::before{
+  top: -8px;
+}
+
+.mobile-nav-toggle .hamburger::after{
+  top: 8px;
+}
 
 /* When mobile menu open change hamburger to X */
-.mobile-nav-toggle.open .hamburger{background:transparent}
-.mobile-nav-toggle.open .hamburger::before{transform: rotate(45deg); top:0}
-.mobile-nav-toggle.open .hamburger::after{transform: rotate(-45deg); top:0}
+.mobile-nav-toggle.open .hamburger{
+  background: transparent;
+}
 
-/* Mobile navigation breakpoint */
-@media (max-width: 768px) {
-  .mobile-nav-toggle {
-    display: flex;
-  }
-  
-  .nav {
-    display: none;
-  }
+.mobile-nav-toggle.open .hamburger::before{
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.mobile-nav-toggle.open .hamburger::after{
+  transform: rotate(-45deg);
+  top: 0;
 }
 
 /* Mobile nav panel (hidden by default) */
 body.mobile-nav-open .nav{
-  display: block !important;
+  display: flex !important;
+  flex-direction: column;
   position: fixed;
   /* top is set dynamically by JS to match header height */
   top: var(--header-height, 72px);
   right: 0;
   left: 0;
   background: var(--white);
-  padding: 1.25rem 1rem;
+  padding: 1rem;
   box-shadow: 0 12px 30px rgba(6,39,59,0.12);
-  z-index: 1200;
+  z-index: 999;
   border-top: 1px solid var(--border);
   max-height: calc(100vh - var(--header-height, 72px));
   overflow-y: auto;
@@ -1151,14 +1177,31 @@ body.mobile-nav-open .nav .nav-cta{
   text-align: center;
 }
 
+/* Main mobile breakpoint styles */
 @media (max-width: 768px){
-  .mobile-nav-toggle{display:flex}
-  .nav{display:none}
-  .header-inner{align-items:center}
-}
+  /* Mobile navigation */
+  .mobile-nav-toggle{
+    display: flex !important; /* Force display of hamburger */
+    position: relative;
+    z-index: 1001;
+  }
+  
+  .nav{
+    display: none !important; /* Hide nav by default on mobile */
+  }
 
-@media (max-width: 768px){
-  .nav{display:none}
+  /* Header layout */
+  .header-inner{
+    align-items: center;
+    padding: 0.5rem 1rem;
+    position: relative;
+  }
+
+  .brand{
+    flex: 1;
+  }
+
+  /* Other mobile styles */
   .hero-copy h1{font-size:2rem}
   .services-list{grid-template-columns: 1fr}
   .comparison-header,
