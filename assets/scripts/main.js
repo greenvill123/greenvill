@@ -205,19 +205,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function closeMenu() {
       document.body.classList.remove("mobile-nav-open");
-      btn.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
+      toggle.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
       if (nav) nav.style.top = "";
     }
 
     function openMenu() {
       document.body.classList.add("mobile-nav-open");
-      btn.classList.add("open");
-      btn.setAttribute("aria-expanded", "true");
+      toggle.classList.add("open");
+      toggle.setAttribute("aria-expanded", "true");
       setNavTop();
     }
 
-    btn.addEventListener("click", function () {
+    toggle.addEventListener("click", function () {
       if (document.body.classList.contains("mobile-nav-open")) closeMenu();
       else openMenu();
     });
