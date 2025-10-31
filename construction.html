@@ -86,23 +86,32 @@
     <link rel="stylesheet" href="assets/styles/construction.css">
     <link rel="stylesheet" href="assets/styles/shared-footer.css">
     <link rel="stylesheet" href="assets/styles/floating-social.css">
+    <link rel="stylesheet" href="assets/styles/mobile-nav.css">
     <script defer src="assets/scripts/main.js"></script>
     <script defer src="assets/scripts/construction.js"></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
-    <header class="header header--large header--fixed">
-        <div class="container header-inner">
-            <div class="brand">
-                <div class="logo">Greenvill<span class="logo-accent">.</span></div>
-                <div class="tag">Loans & Construction — Trichy</div>
+    <header class="header header--fixed">
+        <div class="container">
+            <div class="header-inner">
+                <div class="brand">
+                    <div class="logo">Greenvill<span class="logo-accent">.</span></div>
+                    <div class="tag">Loans & Construction — Trichy</div>
+                </div>
+                <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger-inner"></span>
+                </button>
+                <nav class="nav" role="navigation" aria-label="Main Navigation">
+                    <div class="nav-inner">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.html#services" class="nav-link">Loans</a>
+                        <a href="construction.html" class="nav-link active">Construction</a>
+                        <a href="#contact" class="nav-cta">Contact</a>
+                    </div>
+                </nav>
             </div>
-            <nav role="navigation" aria-label="Main Navigation" class="nav">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#services" class="nav-link">Loans</a>
-                <a href="construction.html" class="nav-link active">Construction</a>
-                <a href="#contact" class="nav-cta">Contact</a>
-            </nav>
         </div>
     </header>
 
