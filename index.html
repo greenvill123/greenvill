@@ -26,6 +26,7 @@
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.ico">
     <link rel="stylesheet" href="assets/styles/floating-social.css">
+    <link rel="stylesheet" href="assets/styles/mobile-nav.css">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -83,21 +84,27 @@
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
-    <header class="header header--large header--fixed">
-        <div class="container header-inner">
-            <div class="brand">
-                <div class="logo">Greenvill<span class="logo-accent">.</span></div>
-                <div class="tag">Loans & Construction — Trichy</div>
+    <header class="header header--fixed">
+        <div class="container">
+            <div class="header-inner">
+                <div class="brand">
+                    <div class="logo">Greenvill<span class="logo-accent">.</span></div>
+                    <div class="tag">Loans & Construction — Trichy</div>
+                </div>
+                <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger-inner"></span>
+                </button>
+                <nav class="nav" role="navigation" aria-label="Main Navigation">
+                    <div class="nav-inner">
+                        <a href="index.html" class="nav-link active">Home</a>
+                        <a href="index.html#services" class="nav-link">Loans</a>
+                        <a href="construction.html" class="nav-link">Construction</a>
+                        <a href="#quick" class="nav-cta">Get Callback</a>
+                    </div>
+                </nav>
             </div>
-            <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span class="hamburger"></span>
-            </button>
-            <nav role="navigation" aria-label="Main Navigation" class="nav">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="index.html#services" class="nav-link">Loans</a>
-                <a href="construction.html" class="nav-link">Construction</a>
-                <a href="#quick" class="nav-cta">Get Callback</a>
-            </nav>
+        </div>
         </div>
     </header>
 
