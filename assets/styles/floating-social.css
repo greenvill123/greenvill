@@ -1,132 +1,192 @@
-/* Floating Social Icons */
+/* =========================================================
+   🌿 Floating Social Icons — Animated Entry
+   ========================================================= */
 .social-float {
-    position: fixed;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    z-index: 999;
-    background: var(--social-bg);
-
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 999;
+  padding: 1rem;
+  background: var(--social-bg, rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(6px);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  animation: fadeUp 1s ease-out 0.4s forwards; /* 👈 animation added */
 }
 
+/* --- Icon Base --- */
 .social-float a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--blue);
-    transition: var(--transition);
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--blue);
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
 }
 
 .social-float img {
-    width: 24px;
-    height: 24px;
-    transition: var(--transition);
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Individual social icon colors on hover */
-.social-float a.whatsapp:hover,
-.footer-social a.whatsapp:hover {
-    background: #25D366;
-    transform: scale(1.1);
+/* --- Hover Effects --- */
+.social-float a:hover {
+  transform: translateX(-4px) scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-.social-float a.whatsapp:hover img,
-.footer-social a.whatsapp:hover img {
-    opacity: 0.9;
+.social-float a.whatsapp:hover { background: #25D366; }
+.social-float a.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
 }
-
-.social-float a.instagram:hover,
-.footer-social a.instagram:hover {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-}
-
-.social-float a.facebook:hover {
-    background: #1877F2;
-}
-
-.social-float a.linkedin:hover {
-    background: #0A66C2;
-}
-
+.social-float a.facebook:hover { background: #1877F2; }
+.social-float a.linkedin:hover { background: #0A66C2; }
 .social-float a:not(.whatsapp):hover img {
-    filter: brightness(0) invert(1);
-    transform: scale(1.1);
+  filter: brightness(0) invert(1);
 }
 
-/* Tooltip styles */
+/* --- Tooltip Styling --- */
 .social-float a::before {
-    content: attr(aria-label);
-    position: absolute;
-    right: 120%;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--navy);
-    color: var(--white);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
+  content: attr(aria-label);
+  position: absolute;
+  right: 120%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .social-float a::after {
-    content: '';
-    position: absolute;
-    right: 110%;
-    top: 50%;
-    transform: translateY(-50%);
-    border: 6px solid transparent;
-    border-left-color: var(--navy);
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
+  content: '';
+  position: absolute;
+  right: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: var(--navy);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
 }
 
 .social-float a:hover::before,
 .social-float a:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =========================================================
+   🎞️ Fade-Up Animation
+   ========================================================= */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  60% {
+    opacity: 0.6;
+    transform: translateY(-5px);
+  }
+  100% {
     opacity: 1;
-    visibility: visible;
+    transform: translateY(0);
+  }
 }
 
-/* Responsive styles */
+/* =========================================================
+   📱 Responsive Adjustments
+   ========================================================= */
+
+/* 💻 Laptops (≤1200px) */
+@media (max-width: 1200px) {
+  .social-float {
+    right: 12px;
+    gap: 0.9rem;
+  }
+  .social-float a {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* 📲 Tablets (≤768px) */
 @media (max-width: 768px) {
-    .social-float {
-        right: 10px;
-        padding: 0.75rem;
-    }
-    
-    .social-float a {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .social-float img {
-        width: 20px;
-        height: 20px;
-    }
-    
-    /* Hide tooltips on mobile */
-    .social-float a::before,
-    .social-float a::after {
-        display: none;
-    }
+  .social-float {
+    right: 10px;
+    padding: 0.7rem;
+    gap: 0.8rem;
+  }
+  .social-float a {
+    width: 38px;
+    height: 38px;
+  }
+  .social-float img {
+    width: 20px;
+    height: 20px;
+  }
+  .social-float a::before,
+  .social-float a::after {
+    display: none; /* hide tooltips on touch devices */
+  }
 }
 
-/* Hide on very small screens */
-@media (max-width: 480px) {
-    .social-float {
-        display: none;
-    }
+/* 📞 Mobiles (≤576px) */
+@media (max-width: 576px) {
+  .social-float {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.8rem;
+    background: var(--social-bg, rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(6px);
+    box-shadow: var(--card-shadow);
+  }
+  .social-float a {
+    width: 36px;
+    height: 36px;
+  }
+  /* Enable horizontal slide animation on hover */
+  .social-float a:hover {
+    transform: translateX(-4px);
+  }
+}
+
+/* 📱 Small Mobiles (≤400px) */
+@media (max-width: 400px) {
+  .social-float {
+    right: 6px;
+    gap: 0.5rem;
+    padding: 0.6rem;
+  }
+  .social-float a {
+    width: 32px;
+    height: 32px;
+  }
+  .social-float img {
+    width: 18px;
+    height: 18px;
+  }
+  /* Adjust hover animation for better touch experience */
+  .social-float a:hover {
+    transform: translateX(-3px);
+  }
 }
