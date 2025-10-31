@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initFormValidation();
   initScrollAnimations();
   initNumberCounting();
+  initMobileNav();
 
   // Bank Slider
   function initBankSlider() {
@@ -169,6 +170,74 @@ document.addEventListener("DOMContentLoaded", function () {
       prevBtn.style.display = "none";
       nextBtn.style.display = "none";
     }
+  }
+
+  // Mobile navigation handler
+  function initMobileNav() {
+    const toggle = document.querySelector(".mobile-nav-toggle");
+    if (!toggle) return;
+
+    toggle.addEventListener("click", function () {
+      const isOpen = document.body.classList.contains("mobile-nav-open");
+
+      if (isOpen) {
+        document.body.classList.remove("mobile-nav-open");
+        toggle.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      } else {
+        document.body.classList.add("mobile-nav-open");
+        toggle.classList.add("open");
+        toggle.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    // compute and set nav top position to match header height
+    function setNavTop() {
+      if (!nav) return;
+      const headerHeight = header.getBoundingClientRect().height;
+      nav.style.top = headerHeight + "px";
+    }
+
+    function closeMenu() {
+      document.body.classList.remove("mobile-nav-open");
+      btn.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+      if (nav) nav.style.top = "";
+    }
+
+    function openMenu() {
+      document.body.classList.add("mobile-nav-open");
+      btn.classList.add("open");
+      btn.setAttribute("aria-expanded", "true");
+      setNavTop();
+    }
+
+    btn.addEventListener("click", function () {
+      if (document.body.classList.contains("mobile-nav-open")) closeMenu();
+      else openMenu();
+    });
+
+    // Close menu when a nav link is clicked
+    if (nav) {
+      nav.addEventListener("click", function (e) {
+        if (e.target && e.target.tagName === "A") closeMenu();
+      });
+    }
+
+    // Close on Escape key
+    document.addEventListener("keydown", function (e) {
+      if (
+        e.key === "Escape" &&
+        document.body.classList.contains("mobile-nav-open")
+      ) {
+        closeMenu();
+      }
+    });
+
+    // Update nav position on resize while menu is open
+    window.addEventListener("resize", function () {
+      if (document.body.classList.contains("mobile-nav-open")) setNavTop();
+    });
   }
 
   // FAQ Accordion
