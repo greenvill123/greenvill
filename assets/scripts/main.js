@@ -175,7 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Mobile navigation handler
   function initMobileNav() {
     const toggle = document.querySelector(".mobile-nav-toggle");
-    if (!toggle) return;
+    const nav = document.querySelector(".nav");
+    const header = document.querySelector(".header");
+    if (!toggle || !nav || !header) return;
 
     toggle.addEventListener("click", function () {
       const isOpen = document.body.classList.contains("mobile-nav-open");
@@ -193,10 +195,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // compute and set nav top position to match header height
     function setNavTop() {
-      if (!nav) return;
       const headerHeight = header.getBoundingClientRect().height;
       nav.style.top = headerHeight + "px";
     }
+
+    // Set initial nav position and update on resize
+    setNavTop();
+    window.addEventListener("resize", setNavTop);
 
     function closeMenu() {
       document.body.classList.remove("mobile-nav-open");
