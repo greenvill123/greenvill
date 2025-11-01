@@ -20,7 +20,7 @@
 
 .mobile-nav-toggle {
   display: none;
-  padding: 15px;
+  padding: 12px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -29,6 +29,16 @@
   z-index: 1002;
   width: 44px;
   height: 44px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-nav-toggle:hover {
+  background-color: rgba(6, 39, 59, 0.05);
+}
+
+.mobile-nav-toggle:active {
+  background-color: rgba(6, 39, 59, 0.1);
 }
 
 .mobile-nav-toggle:focus {
@@ -44,6 +54,7 @@
   background-color: var(--navy);
   position: relative;
   margin: auto;
+  transition: background-color 0.3s ease;
 }
 
 .mobile-nav-toggle .hamburger::before,
@@ -65,22 +76,48 @@
   top: 8px;
 }
 
-@media (max-width: 768px) {
+/* Show hamburger menu on all screen sizes except desktop (>1024px) */
+@media (max-width: 1024px) {
   .mobile-nav-toggle {
     display: block;
+    order: 3; /* Ensure it's positioned after brand */
+  }
+
+  /* Backdrop overlay when menu is open */
+  body.mobile-nav-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
   }
 
   .nav {
     position: fixed;
     top: 0;
-    left: 0;
     right: 0;
+    width: 85%;
+    max-width: 320px;
     padding-top: 80px;
     background: var(--white);
     height: 100vh;
     transform: translateX(100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1001;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .nav-inner {
@@ -92,15 +129,33 @@
 
   .nav-link {
     display: block;
-    padding: 1rem;
-    text-align: center;
+    padding: 1rem 1.5rem;
+    text-align: left;
     font-size: 1.1rem;
     width: 100%;
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(6, 39, 59, 0.08);
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    background-color: var(--gradient-light);
+    color: var(--green);
+  }
+
+  .nav-link.active {
+    background-color: var(--gradient-light);
+    color: var(--green);
+    font-weight: 600;
   }
 
   .nav-cta {
-    margin-top: 1rem;
+    margin: 1rem 1.5rem;
     text-align: center;
+    display: block;
+    width: calc(100% - 3rem);
   }
 
   body.mobile-nav-open .nav {
@@ -124,5 +179,27 @@
   /* Prevent scrolling when menu is open */
   body.mobile-nav-open {
     overflow: hidden;
+  }
+}
+
+/* Hide regular navigation on non-desktop screens */
+@media (max-width: 1024px) {
+  .nav {
+    display: none !important;
+  }
+  
+  body.mobile-nav-open .nav {
+    display: flex !important;
+  }
+}
+
+/* Ensure desktop navigation is visible on desktop screens */
+@media (min-width: 1025px) {
+  .nav {
+    display: flex !important;
+  }
+  
+  .mobile-nav-toggle {
+    display: none !important;
   }
 }
