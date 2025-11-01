@@ -52,6 +52,27 @@
         "https://facebook.com/greenvillassociates",
         "https://instagram.com/greenvillassociates",
         "https://linkedin.com/company/greenvillassociates"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+919787550670",
+          "contactType": "customer service",
+          "areaServed": "IN",
+          "availableLanguage": ["English", "Tamil"],
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          }
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "greenvillassociates@gmail.com",
+          "contactType": "customer service",
+          "areaServed": "IN"
+        }
       ]
     }
     </script>
@@ -59,6 +80,7 @@
     <link rel="stylesheet" href="assets/styles/contact.css">
     <link rel="stylesheet" href="assets/styles/shared-footer.css">
     <link rel="stylesheet" href="assets/styles/floating-social.css">
+    <link rel="stylesheet" href="assets/styles/mobile-nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -75,10 +97,13 @@
                 <span class="hamburger"></span>
             </button>
             <nav role="navigation" aria-label="Main Navigation" class="nav">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#services" class="nav-link">Loans</a>
-                <a href="construction.html" class="nav-link">Construction</a>
-                <a href="contact.html" class="nav-link active">Contact</a>
+                <div class="nav-inner">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.html#services" class="nav-link">Loans</a>
+                    <a href="construction.html" class="nav-link">Construction</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                    <a href="index.html#quick" class="nav-cta">Get Callback</a>
+                </div>
             </nav>
         </div>
     </header>
@@ -211,6 +236,48 @@
                 </div>
             </div>
         </section>
+
+        <section style="padding: 4rem 0; background: var(--white);">
+            <div class="container">
+                <h2>Why Visit Our Office in Trichy?</h2>
+                <p class="lead">Our office at Chatram Bus Stand, Trichy is conveniently located and easily accessible. Here's what you can expect when you visit us.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <h3>Directions to Our Office</h3>
+                    <p>We are located at <strong>09, Ground Floor, Chithra Complex, Chatram Bus Stand, Trichy - 620002</strong>. Our office is easily accessible by public transport:</p>
+                    <ul style="line-height: 1.8; margin: 1rem 0;">
+                        <li><strong>By Bus:</strong> Get down at Chatram Bus Stand - we're just a 2-minute walk from the bus stand</li>
+                        <li><strong>By Auto/Taxi:</strong> Any auto or taxi driver in Trichy knows Chatram Bus Stand location</li>
+                        <li><strong>By Car:</strong> Parking available near our office building</li>
+                        <li><strong>Landmarks:</strong> We're located in Chithra Complex, near the main bus stand area</li>
+                    </ul>
+
+                    <h3>What to Expect During Your Visit</h3>
+                    <ul style="line-height: 1.8; margin: 1rem 0;">
+                        <li><strong>Free Consultation:</strong> Get expert advice on loans or construction without any obligation</li>
+                        <li><strong>Quick Response:</strong> Our team will address your queries and provide immediate guidance</li>
+                        <li><strong>Document Review:</strong> Bring your documents and we'll review them on the spot</li>
+                        <li><strong>Transparent Process:</strong> Clear explanation of rates, fees, and process timelines</li>
+                    </ul>
+
+                    <h3>Prefer to Contact Online?</h3>
+                    <p>If you can't visit us in person, you can still get started by:</p>
+                    <ul style="line-height: 1.8; margin: 1rem 0;">
+                        <li>Filling out the contact form on this page - we respond within 2 hours</li>
+                        <li>Calling us at <a href="tel:+919787550670">+91 97875 50670</a> during business hours</li>
+                        <li>Emailing us at <a href="mailto:greenvillassociates@gmail.com">greenvillassociates@gmail.com</a></li>
+                        <li>Using our <a href="index.html#quick">quick callback form</a> on the homepage</li>
+                    </ul>
+
+                    <h3>Common Questions Before Visiting</h3>
+                    <p><strong>Do I need an appointment?</strong> Walk-ins are welcome, but appointments help us serve you better. You can call us to schedule a convenient time.</p>
+                    <p><strong>What documents should I bring?</strong> For loans, bring ID proof, address proof, and income documents. For construction inquiries, bring property documents if available.</p>
+                    <p><strong>Is consultation free?</strong> Yes, all consultations are completely free with no hidden charges.</p>
+
+                    <p style="margin-top: 2rem;">We look forward to helping you with your loan or construction needs in Trichy. For more information about our services, visit our <a href="index.html">homepage</a> or check out our <a href="construction.html">construction services</a> page.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer id="site-footer" class="footer" itemscope itemtype="https://schema.org/LocalBusiness">
@@ -247,7 +314,7 @@
         </div>
     </footer>
 
-    <script src="assets/scripts/main.js"></script>
-    <script src="assets/scripts/contact.js"></script>
+    <script defer src="assets/scripts/main.js"></script>
+    <script defer src="assets/scripts/contact.js"></script>
 </body>
 </html>
