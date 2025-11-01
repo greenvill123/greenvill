@@ -8,6 +8,68 @@
     <link rel="stylesheet" href="assets/styles/main.css">
     <link rel="stylesheet" href="assets/styles/shared-footer.css">
     <link rel="stylesheet" href="assets/styles/floating-social.css">
+    <link rel="stylesheet" href="assets/styles/mobile-nav.css">
+    <script defer src="assets/scripts/main.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://www.greenvillassociates.com/privacy.html",
+      "name": "Privacy Policy - Greenvill Associates",
+      "description": "Privacy Policy for Greenvill Associates: How we handle your data for loans and construction services in Trichy.",
+      "url": "https://www.greenvillassociates.com/privacy.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Greenvill Associates",
+        "url": "https://www.greenvillassociates.com"
+      },
+      "about": {
+        "@type": "Organization",
+        "name": "Greenvill Associates",
+        "url": "https://www.greenvillassociates.com"
+      }
+    }
+    </script>
+    <style>
+        /* Override main.css body styles for privacy page */
+        html {
+            height: 100% !important;
+        }
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            min-height: 100vh !important;
+            height: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+        }
+        /* Header is fixed, so we account for it */
+        header {
+            flex-shrink: 0 !important;
+        }
+        /* Main content takes remaining space and grows */
+        main {
+            flex: 1 1 auto !important;
+            padding-top: 120px !important;
+            padding-bottom: 4rem !important;
+            width: 100% !important;
+            min-height: 0 !important;
+        }
+        /* Footer stays at bottom */
+        footer {
+            flex-shrink: 0 !important;
+            width: 100% !important;
+            margin-top: auto !important;
+            margin-bottom: 0 !important;
+        }
+        /* Override container height for privacy page */
+        main.container {
+            height: auto !important;
+            max-height: none !important;
+        }
+    </style>
 </head>
 <body>
     <header class="header header--large header--fixed">
@@ -16,16 +78,22 @@
                 <div class="logo">Greenvill<span class="logo-accent">.</span></div>
                 <div class="tag">Loans & Construction — Trichy</div>
             </div>
+            <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
             <nav role="navigation" aria-label="Main Navigation" class="nav">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#services" class="nav-link">Loans</a>
-                <a href="construction.html" class="nav-link">Construction</a>
-                <a href="index.html#quick" class="nav-cta">Get Callback</a>
+                <div class="nav-inner">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.html#services" class="nav-link">Loans</a>
+                    <a href="construction.html" class="nav-link">Construction</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="index.html#quick" class="nav-cta">Get Callback</a>
+                </div>
             </nav>
         </div>
     </header>
 
-    <main id="main" class="container" style="padding-top:120px; padding-bottom:3rem;">
+    <main id="main" class="container" style="flex: 1 1 auto !important; min-height: 0 !important;">
         <h1>Privacy Policy</h1>
         <p class="lead">Last updated: October 2025</p>
 
@@ -75,10 +143,47 @@
         <section>
             <h2>8. Contact Us</h2>
             <p>If you have questions about this policy or our data handling practices, please contact:</p>
-            <p>Greenvill Associates<br>Chatram Bus Stand, Trichy, Tamil Nadu 620002<br>Phone: +91 98765 43210<br>Email: info@greenvillassociates.com</p>
+            <p><strong>Greenvill Associates</strong><br>
+            09, Ground Floor, Chithra Complex<br>
+            Chatram Bus Stand, Trichy, Tamil Nadu 620002<br>
+            Phone: <a href="tel:+919787550670">+91 97875 50670</a><br>
+            Email: <a href="mailto:greenvillassociates@gmail.com">greenvillassociates@gmail.com</a></p>
+            <p>You can also visit our <a href="contact.html">contact page</a> for more ways to reach us.</p>
         </section>
 
-        <p style="margin-top:2rem; color:var(--muted); font-size:0.95rem;">This policy may be updated from time to time. The latest version will be published on this page.</p>
+        <section>
+            <h2>9. Data Retention</h2>
+            <p>We retain your personal information only for as long as necessary to fulfill the purposes outlined in this policy, unless a longer retention period is required or permitted by law. For loan applications, we may retain information for the duration of the loan relationship plus applicable legal periods. For construction projects, we retain project-related data for warranty and service purposes.</p>
+            <p>When we no longer need your information, we will securely delete or anonymize it in accordance with our data retention policies.</p>
+        </section>
+
+        <section>
+            <h2>10. Children's Privacy</h2>
+            <p>Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately and we will take steps to delete such information.</p>
+        </section>
+
+        <section>
+            <h2>11. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the "Last updated" date. We encourage you to review this policy periodically.</p>
+            <p>Your continued use of our services after any changes to this Privacy Policy constitutes your acceptance of those changes.</p>
+        </section>
+
+        <section>
+            <h2>12. Compliance with Indian Laws</h2>
+            <p>This Privacy Policy is designed to comply with applicable Indian data protection laws and regulations. As a business operating in Trichy, India, we adhere to:</p>
+            <ul>
+                <li>Information Technology Act, 2000 and its rules</li>
+                <li>Relevant guidelines issued by the Ministry of Electronics and Information Technology</li>
+                <li>RBI guidelines for financial services (where applicable)</li>
+            </ul>
+            <p>If you are located outside India, please note that we process your information in India, and your information may be transferred to and stored in India.</p>
+        </section>
+
+        <p style="margin-top:2rem; padding: 1.5rem; background: var(--gradient-light); border-radius: var(--border-radius); color:var(--navy);">
+            <strong>Questions About This Policy?</strong> We're here to help. If you have any questions about our Privacy Policy or how we handle your data, please <a href="contact.html">contact us</a>. You can also learn more about our <a href="index.html">services</a> or visit our office at Chatram Bus Stand, Trichy.
+        </p>
+        
+        <p style="margin-top:1rem; color:var(--muted); font-size:0.95rem;">This policy was last updated on: October 2025. We reserve the right to update this policy from time to time.</p>
     </main>
 
     <!-- Floating Social Icons -->
