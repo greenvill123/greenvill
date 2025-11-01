@@ -14,7 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Bank Slider
   function initBankSlider() {
     const bankSlider = document.getElementById("bankSlider");
-    if (!bankSlider) return;
+    if (!bankSlider) {
+      console.warn("Bank slider element not found");
+      return;
+    }
 
     const banks = [
       "SBI",
@@ -97,24 +100,70 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Auto-scroll logic (smooth continuous scroll)
     let rafId = null;
+    let isPaused = false;
     const speed = 0.5; // pixels per frame, tweak as needed
 
     function startAutoScroll() {
-      const maxScroll = bankSlider.scrollWidth - bankSlider.clientWidth;
-      function step() {
-        if (bankSlider.scrollLeft >= maxScroll) {
-          // reset to start smoothly
-          bankSlider.scrollLeft = 0;
-        } else {
-          bankSlider.scrollLeft += speed;
-        }
-        rafId = window.requestAnimationFrame(step);
+      // Wait for DOM to be ready and logos to be added
+      if (bankSlider.children.length === 0) {
+        setTimeout(startAutoScroll, 100);
+        return;
       }
+
+      // Ensure the slider has proper overflow styling
+      bankSlider.style.overflowX = 'auto';
+      bankSlider.style.overflowY = 'hidden';
+      
+      // Reset scroll position
+      bankSlider.scrollLeft = 0;
+      
+      function step() {
+        if (!isPaused && bankSlider) {
+          const maxScroll = bankSlider.scrollWidth - bankSlider.clientWidth;
+          
+          // If we've reached the end, reset to start
+          if (maxScroll > 0 && bankSlider.scrollLeft >= maxScroll - 1) {
+            bankSlider.scrollLeft = 0;
+          } else {
+            bankSlider.scrollLeft += speed;
+          }
+          rafId = window.requestAnimationFrame(step);
+        }
+      }
+
+      // Pause on hover for better UX
+      bankSlider.addEventListener('mouseenter', () => {
+        isPaused = true;
+      });
+      bankSlider.addEventListener('mouseleave', () => {
+        isPaused = false;
+        if (!rafId && bankSlider) {
+          rafId = window.requestAnimationFrame(step);
+        }
+      });
+
+      // Touch events for mobile
+      let touchStartX = 0;
+      bankSlider.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        isPaused = true;
+      });
+      bankSlider.addEventListener('touchend', () => {
+        setTimeout(() => {
+          isPaused = false;
+          if (!rafId && bankSlider) {
+            rafId = window.requestAnimationFrame(step);
+          }
+        }, 1000);
+      });
+
+      // Start scrolling
       if (!rafId) rafId = window.requestAnimationFrame(step);
     }
 
-    // Start when images have loaded (or after a short delay)
-    window.setTimeout(startAutoScroll, 600);
+    // Start when images have loaded (or after a delay to ensure DOM is ready)
+    setTimeout(startAutoScroll, 800);
+    console.log("Bank slider initialized");
   }
 
   // Number Counting Animation
@@ -179,80 +228,88 @@ document.addEventListener("DOMContentLoaded", function () {
     const header = document.querySelector(".header");
 
     if (!toggle || !nav || !header) {
-      console.error("Mobile navigation elements not found");
+      console.warn("Mobile navigation elements not found - this is normal on desktop");
       return;
     }
+    console.log("Mobile navigation initialized");
 
-    function toggleMenu(event) {
-      event.preventDefault();
-      const isOpen = document.body.classList.contains("mobile-nav-open");
-
-      if (isOpen) {
-        document.body.classList.remove("mobile-nav-open");
-        toggle.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      } else {
-        document.body.classList.add("mobile-nav-open");
-        toggle.classList.add("open");
-        toggle.setAttribute("aria-expanded", "true");
-      }
-    }
-
-    // Remove any existing event listeners
-    toggle.removeEventListener("click", toggleMenu);
-    // Add new click event listener
-    toggle.addEventListener("click", toggleMenu);
-
-    // compute and set nav top position to match header height
+    // Compute and set nav top position to match header height
     function setNavTop() {
       const headerHeight = header.getBoundingClientRect().height;
       nav.style.top = headerHeight + "px";
     }
 
-    // Set initial nav position and update on resize
-    setNavTop();
-    window.addEventListener("resize", setNavTop);
-
+    // Close menu function
     function closeMenu() {
       document.body.classList.remove("mobile-nav-open");
       toggle.classList.remove("open");
       toggle.setAttribute("aria-expanded", "false");
-      if (nav) nav.style.top = "";
+      nav.style.top = "";
     }
 
+    // Open menu function
     function openMenu() {
+      setNavTop();
       document.body.classList.add("mobile-nav-open");
       toggle.classList.add("open");
       toggle.setAttribute("aria-expanded", "true");
-      setNavTop();
     }
 
-    toggle.addEventListener("click", function () {
-      if (document.body.classList.contains("mobile-nav-open")) closeMenu();
-      else openMenu();
+    // Toggle menu function (single event handler)
+    function toggleMenu(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      
+      const isOpen = document.body.classList.contains("mobile-nav-open");
+      
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    // Attach click event listener to hamburger button
+    toggle.addEventListener("click", toggleMenu);
+
+    // Close menu when clicking on nav links
+    const navLinks = nav.querySelectorAll("a");
+    navLinks.forEach(function(link) {
+      link.addEventListener("click", function() {
+        closeMenu();
+      });
     });
 
-    // Close menu when a nav link is clicked
-    if (nav) {
-      nav.addEventListener("click", function (e) {
-        if (e.target && e.target.tagName === "A") closeMenu();
-      });
-    }
-
-    // Close on Escape key
-    document.addEventListener("keydown", function (e) {
-      if (
-        e.key === "Escape" &&
-        document.body.classList.contains("mobile-nav-open")
-      ) {
+    // Close menu on Escape key press
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && document.body.classList.contains("mobile-nav-open")) {
         closeMenu();
       }
     });
 
-    // Update nav position on resize while menu is open
-    window.addEventListener("resize", function () {
-      if (document.body.classList.contains("mobile-nav-open")) setNavTop();
+    // Close menu when clicking on backdrop overlay
+    document.addEventListener("click", function(e) {
+      // Close menu if clicking outside the nav menu (on backdrop)
+      if (document.body.classList.contains("mobile-nav-open")) {
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+          closeMenu();
+        }
+      }
+    }, true);
+
+    // Update nav position on window resize
+    let resizeTimeout;
+    window.addEventListener("resize", function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        if (document.body.classList.contains("mobile-nav-open")) {
+          setNavTop();
+        }
+      }, 100);
     });
+
+    // Set initial nav position
+    setNavTop();
   }
 
   // FAQ Accordion
@@ -785,5 +842,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  console.log("Greenvill Associates website initialized successfully!");
+  console.log("✅ Greenvill Associates website initialized successfully!");
+  console.log("✅ Features loaded: Bank Slider, Mobile Nav, Forms, Calculators");
 });
