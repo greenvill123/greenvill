@@ -113,14 +113,14 @@ document.addEventListener("DOMContentLoaded", function () {
       // Ensure the slider has proper overflow styling
       bankSlider.style.overflowX = 'auto';
       bankSlider.style.overflowY = 'hidden';
-      
+
       // Reset scroll position
       bankSlider.scrollLeft = 0;
-      
+
       function step() {
         if (!isPaused && bankSlider) {
           const maxScroll = bankSlider.scrollWidth - bankSlider.clientWidth;
-          
+
           // If we've reached the end, reset to start
           if (maxScroll > 0 && bankSlider.scrollLeft >= maxScroll - 1) {
             bankSlider.scrollLeft = 0;
@@ -259,9 +259,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function toggleMenu(event) {
       event.preventDefault();
       event.stopPropagation();
-      
+
       const isOpen = document.body.classList.contains("mobile-nav-open");
-      
+
       if (isOpen) {
         closeMenu();
       } else {
@@ -274,21 +274,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Close menu when clicking on nav links
     const navLinks = nav.querySelectorAll("a");
-    navLinks.forEach(function(link) {
-      link.addEventListener("click", function() {
+    navLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
         closeMenu();
       });
     });
 
     // Close menu on Escape key press
-    document.addEventListener("keydown", function(e) {
+    document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && document.body.classList.contains("mobile-nav-open")) {
         closeMenu();
       }
     });
 
     // Close menu when clicking on backdrop overlay
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       // Close menu if clicking outside the nav menu (on backdrop)
       if (document.body.classList.contains("mobile-nav-open")) {
         if (!nav.contains(e.target) && !toggle.contains(e.target)) {
@@ -299,9 +299,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update nav position on window resize
     let resizeTimeout;
-    window.addEventListener("resize", function() {
+    window.addEventListener("resize", function () {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(function() {
+      resizeTimeout = setTimeout(function () {
         if (document.body.classList.contains("mobile-nav-open")) {
           setNavTop();
         }
@@ -409,6 +409,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function initFormValidation() {
     const quickForm = document.getElementById("quickForm");
     const constructionForm = document.getElementById("constructionForm");
+    const contactForm = document.getElementById("contactForm");
 
     // Phone number validation (Indian format)
     function isValidIndianPhone(phone) {
@@ -444,40 +445,52 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
+    // CONFIGURATION: REPLACE THIS WITH YOUR DEPLOYED GOOGLE SCRIPT URL
+    const SCRIPT_URL ="https://script.google.com/macros/s/AKfycbxWU6LkLxbChylE41qKGyE0FdYpUeAm_jxCu9hgg-vTQUVJnnpTeVfCcl3azsYxZh5g/exec";
+
     // Handle form submission
     async function handleFormSubmit(form, formType, msgDiv) {
+      if (SCRIPT_URL === "INSERT_YOUR_GOOGLE_SCRIPT_URL_HERE" || !SCRIPT_URL) {
+        console.warn("Script URL not set");
+        // Fallback for demo only
+        showMessage(msgDiv, "Setup Pending: Add Script URL in main.js", "error");
+        return;
+      }
+
       // find either a <button> or <input type="submit"> inside the form
       const submitBtn = form.querySelector(
         'button[type="submit"], input[type="submit"]'
       );
-      const originalText = setSubmitButtonLoading(submitBtn, true);
+      setSubmitButtonLoading(submitBtn, true);
 
       try {
-        // Submit form directly to the form handler (no reCAPTCHA verification)
         const formData = new FormData(form);
         formData.append("form", formType);
 
-        const response = await fetch(
-          "https://forms.greenvillassociates.com/submit",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
-
-        if (!response.ok) throw new Error("Network response was not ok");
-
-        const result = await response.json();
-        if (result.success) {
-          // Successful submission — redirect to success page
-          window.location.href = "form-success.html";
-        } else {
-          throw new Error(result.message || "Submission failed");
+        // Convert FormData to URLSearchParams for Google Scripts compatibility
+        // This is often more reliable than FormData for simple text fields in GAS
+        const data = new URLSearchParams();
+        for (const pair of formData) {
+          data.append(pair[0], pair[1]);
         }
+
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          body: data,
+          // 'no-cors' needed because GAS redirects to a temporary URL which causes CORS issues on the redirection
+          // Note: with 'no-cors', we cannot read response.ok or response.json(). 
+          // We assume success if no network error travels back.
+          mode: "no-cors"
+        });
+
+        // Since we use no-cors, we assume success if we reach here
+        window.location.href = "form-success.html";
+
       } catch (error) {
+        console.error("Form Error:", error);
         showMessage(
           msgDiv,
-          "Sorry, there was a problem. Please try again.",
+          "Sorry, connection failed. Please try again.",
           "error"
         );
         setSubmitButtonLoading(submitBtn, false);
@@ -565,6 +578,30 @@ document.addEventListener("DOMContentLoaded", function () {
         );
       });
     }
+
+    if (contactForm) {
+      contactForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const msgDiv = document.createElement("div"); // Contact form might need a msg container
+        msgDiv.id = "contactFormMsg";
+        if (!contactForm.querySelector("#contactFormMsg")) {
+          contactForm.insertBefore(msgDiv, contactForm.firstChild);
+        }
+
+        const name = contactForm.querySelector('[name="name"]').value.trim();
+        const phone = contactForm.querySelector('[name="phone"]').value.trim();
+        const email = contactForm.querySelector('[name="email"]').value.trim();
+        const msg = contactForm.querySelector('[name="message"]').value.trim();
+
+        // Basic validation
+        if (!name || !phone) {
+          showMessage(msgDiv, "Name and Phone are required", "error");
+          return;
+        }
+
+        await handleFormSubmit(contactForm, "General Contact", msgDiv);
+      });
+    }
   }
 
   // Scroll Animations
@@ -629,20 +666,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
                     <div style="text-align: center; padding: 1rem; background: var(--gradient-light); border-radius: 8px;">
                         <div style="font-size: 1.5rem; font-weight: 700; color: var(--green);">₹${Math.round(
-                          emi
-                        ).toLocaleString()}</div>
+      emi
+    ).toLocaleString()}</div>
                         <div style="font-size: 0.9rem; color: var(--muted);">Monthly EMI</div>
                     </div>
                     <div style="text-align: center; padding: 1rem; background: var(--gradient-light); border-radius: 8px;">
                         <div style="font-size: 1.5rem; font-weight: 700; color: var(--navy);">₹${Math.round(
-                          totalAmount
-                        ).toLocaleString()}</div>
+      totalAmount
+    ).toLocaleString()}</div>
                         <div style="font-size: 0.9rem; color: var(--muted);">Total Amount</div>
                     </div>
                     <div style="text-align: center; padding: 1rem; background: var(--gradient-light); border-radius: 8px;">
                         <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent);">₹${Math.round(
-                          totalInterest
-                        ).toLocaleString()}</div>
+      totalInterest
+    ).toLocaleString()}</div>
                         <div style="font-size: 0.9rem; color: var(--muted);">Total Interest</div>
                     </div>
                 </div>
@@ -704,9 +741,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="calculator-result">
                 <h3>Eligibility Check Result</h3>
                 <div style="text-align: center; margin: 1rem 0;">
-                    <div style="font-size: 2rem; font-weight: 700; color: ${
-                      isEligible ? "var(--success)" : "var(--error)"
-                    };">
+                    <div style="font-size: 2rem; font-weight: 700; color: ${isEligible ? "var(--success)" : "var(--error)"
+      };">
                         ${isEligible ? "✓ Eligible" : "✗ Not Eligible"}
                     </div>
                     <div style="font-size: 1.2rem; color: var(--muted); margin-top: 0.5rem;">
@@ -716,22 +752,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
                     <div style="text-align: center; padding: 1rem; background: var(--gradient-light); border-radius: 8px;">
                         <div style="font-size: 1.3rem; font-weight: 700; color: var(--navy);">₹${Math.round(
-                          maxLoanAmount
-                        ).toLocaleString()}</div>
+        maxLoanAmount
+      ).toLocaleString()}</div>
                         <div style="font-size: 0.9rem; color: var(--muted);">Max Loan Amount</div>
                     </div>
                     <div style="text-align: center; padding: 1rem; background: var(--gradient-light); border-radius: 8px;">
                         <div style="font-size: 1.3rem; font-weight: 700; color: var(--navy);">₹${Math.round(
-                          maxEMI
-                        ).toLocaleString()}</div>
+        maxEMI
+      ).toLocaleString()}</div>
                         <div style="font-size: 0.9rem; color: var(--muted);">Max Monthly EMI</div>
                     </div>
                 </div>
-                ${
-                  !isEligible
-                    ? '<div style="margin-top: 1rem; padding: 1rem; background: rgba(239,68,68,0.1); border-radius: 8px; color: var(--error); text-align: center;">Improve your eligibility by increasing income or improving credit score</div>'
-                    : ""
-                }
+                ${!isEligible
+        ? '<div style="margin-top: 1rem; padding: 1rem; background: rgba(239,68,68,0.1); border-radius: 8px; color: var(--error); text-align: center;">Improve your eligibility by increasing income or improving credit score</div>'
+        : ""
+      }
             </div>
         `;
   };
@@ -765,61 +800,55 @@ document.addEventListener("DOMContentLoaded", function () {
       const months = tenure * 12;
       const emi = isEligible
         ? (amount * monthlyRate * Math.pow(1 + monthlyRate, months)) /
-          (Math.pow(1 + monthlyRate, months) - 1)
+        (Math.pow(1 + monthlyRate, months) - 1)
         : 0;
       const totalAmount = emi * months;
       const totalInterest = totalAmount - amount;
 
       comparisonHTML += `
-                <div style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 8px; background: ${
-                  isEligible ? "var(--white)" : "rgba(0,0,0,0.05)"
-                };">
+                <div style="padding: 1.5rem; border: 1px solid var(--border); border-radius: 8px; background: ${isEligible ? "var(--white)" : "rgba(0,0,0,0.05)"
+        };">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                        <h4 style="margin: 0; color: var(--navy);">${
-                          loan.name
-                        }</h4>
-                        <span style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; background: ${
-                          isEligible ? "var(--success)" : "var(--error)"
-                        }; color: white;">
+                        <h4 style="margin: 0; color: var(--navy);">${loan.name
+        }</h4>
+                        <span style="padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; background: ${isEligible ? "var(--success)" : "var(--error)"
+        }; color: white;">
                             ${isEligible ? "Eligible" : "Not Eligible"}
                         </span>
                     </div>
-                    ${
-                      isEligible
-                        ? `
+                    ${isEligible
+          ? `
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;">
                             <div style="text-align: center;">
                                 <div style="font-size: 1.2rem; font-weight: 700; color: var(--green);">₹${Math.round(
-                                  emi
-                                ).toLocaleString()}</div>
+            emi
+          ).toLocaleString()}</div>
                                 <div style="font-size: 0.8rem; color: var(--muted);">Monthly EMI</div>
                             </div>
                             <div style="text-align: center;">
-                                <div style="font-size: 1.2rem; font-weight: 700; color: var(--navy);">${
-                                  loan.rate
-                                }%</div>
+                                <div style="font-size: 1.2rem; font-weight: 700; color: var(--navy);">${loan.rate
+          }%</div>
                                 <div style="font-size: 0.8rem; color: var(--muted);">Interest Rate</div>
                             </div>
                             <div style="text-align: center;">
                                 <div style="font-size: 1.2rem; font-weight: 700; color: var(--accent);">₹${Math.round(
-                                  totalInterest
-                                ).toLocaleString()}</div>
+            totalInterest
+          ).toLocaleString()}</div>
                                 <div style="font-size: 0.8rem; color: var(--muted);">Total Interest</div>
                             </div>
                         </div>
                     `
-                        : `
+          : `
                         <div style="text-align: center; color: var(--muted);">
-                            ${
-                              amount > loan.maxAmount
-                                ? `Amount exceeds maximum limit of ₹${loan.maxAmount.toLocaleString()}`
-                                : tenure > loan.maxTenure
-                                ? `Tenure exceeds maximum limit of ${loan.maxTenure} years`
-                                : "Not eligible for this loan type"
-                            }
+                            ${amount > loan.maxAmount
+            ? `Amount exceeds maximum limit of ₹${loan.maxAmount.toLocaleString()}`
+            : tenure > loan.maxTenure
+              ? `Tenure exceeds maximum limit of ${loan.maxTenure} years`
+              : "Not eligible for this loan type"
+          }
                         </div>
                     `
-                    }
+        }
                 </div>
             `;
     });
