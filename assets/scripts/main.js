@@ -1,8 +1,8 @@
 // Greenvill Associates — Modern Loan Website JavaScript
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize all features
-  initBankSlider();
-  initTestimonialSlider();
+  // initBankSlider();
+  // initTestimonialSlider();
   initFAQ();
   initCalculatorTabs();
   initRangeSliders();
@@ -12,159 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initMobileNav();
 
   // Bank Slider
-  function initBankSlider() {
-    const bankSlider = document.getElementById("bankSlider");
-    if (!bankSlider) {
-      console.warn("Bank slider element not found");
-      return;
-    }
-
-    const banks = [
-      "SBI",
-      "HDFC",
-      "ICICI",
-      "Axis Bank",
-      "Kotak Mahindra",
-      "IndusInd",
-      "Yes Bank",
-      "Federal Bank",
-      "IDFC First",
-      "Bandhan Bank",
-      "RBL Bank",
-      "Tata Capital",
-      "Bajaj Finserv",
-    ];
-
-    // Create bank logos — prefer to show an image when available, otherwise fall back to text.
-    // This tries common filename variants and extensions. If none load, it will render the bank name.
-    const basePath = "assets/images/";
-    const exts = [".svg", ".png", ".jpg", ".jpeg"];
-
-    function createBankLogo(bank) {
-      const container = document.createElement("div");
-      container.className = "bank-logo";
-      container.setAttribute("aria-label", `${bank} Bank`);
-
-      const caption = document.createElement("span");
-      caption.className = "bank-name";
-      caption.textContent = bank;
-
-      // Candidate name patterns to try
-      const patterns = [];
-      patterns.push(bank); // original (may contain spaces)
-      patterns.push(bank.toLowerCase());
-      patterns.push(bank.toLowerCase().replace(/\s+/g, ""));
-      patterns.push(bank.toLowerCase().replace(/\s+/g, "-"));
-      patterns.push(bank.toLowerCase().replace(/\s+/g, "_"));
-      patterns.push(bank.split(" ")[0].toLowerCase());
-
-      let tried = 0;
-      let loaded = false;
-
-      function tryNext() {
-        if (loaded) return;
-        if (tried >= patterns.length * exts.length) {
-          // no image found — fallback to text-only (caption will show)
-          container.textContent = "";
-          container.appendChild(caption);
-          bankSlider.appendChild(container);
-          return;
-        }
-
-        const pattern = patterns[Math.floor(tried / exts.length)];
-        const ext = exts[tried % exts.length];
-        // encodeURIComponent to safely handle spaces and special chars
-        const candidate = basePath + encodeURIComponent(pattern) + ext;
-
-        const img = new Image();
-        img.alt = bank;
-        img.onload = function () {
-          loaded = true;
-          img.className = "bank-logo-img";
-          container.appendChild(img);
-          container.appendChild(caption);
-          bankSlider.appendChild(container);
-        };
-        img.onerror = function () {
-          tried++;
-          tryNext();
-        };
-        img.src = candidate;
-      }
-
-      tryNext();
-    }
-
-    // Build logos (single instance each). We'll implement an auto-scroll instead of DOM duplication.
-    banks.forEach((bank) => createBankLogo(bank));
-
-    // Auto-scroll logic (smooth continuous scroll)
-    let rafId = null;
-    let isPaused = false;
-    const speed = 0.5; // pixels per frame, tweak as needed
-
-    function startAutoScroll() {
-      // Wait for DOM to be ready and logos to be added
-      if (bankSlider.children.length === 0) {
-        setTimeout(startAutoScroll, 100);
-        return;
-      }
-
-      // Ensure the slider has proper overflow styling
-      bankSlider.style.overflowX = 'auto';
-      bankSlider.style.overflowY = 'hidden';
-
-      // Reset scroll position
-      bankSlider.scrollLeft = 0;
-
-      function step() {
-        if (!isPaused && bankSlider) {
-          const maxScroll = bankSlider.scrollWidth - bankSlider.clientWidth;
-
-          // If we've reached the end, reset to start
-          if (maxScroll > 0 && bankSlider.scrollLeft >= maxScroll - 1) {
-            bankSlider.scrollLeft = 0;
-          } else {
-            bankSlider.scrollLeft += speed;
-          }
-          rafId = window.requestAnimationFrame(step);
-        }
-      }
-
-      // Pause on hover for better UX
-      bankSlider.addEventListener('mouseenter', () => {
-        isPaused = true;
-      });
-      bankSlider.addEventListener('mouseleave', () => {
-        isPaused = false;
-        if (!rafId && bankSlider) {
-          rafId = window.requestAnimationFrame(step);
-        }
-      });
-
-      // Touch events for mobile
-      let touchStartX = 0;
-      bankSlider.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-        isPaused = true;
-      });
-      bankSlider.addEventListener('touchend', () => {
-        setTimeout(() => {
-          isPaused = false;
-          if (!rafId && bankSlider) {
-            rafId = window.requestAnimationFrame(step);
-          }
-        }, 1000);
-      });
-
-      // Start scrolling
-      if (!rafId) rafId = window.requestAnimationFrame(step);
-    }
-
-    // Start when images have loaded (or after a delay to ensure DOM is ready)
-    setTimeout(startAutoScroll, 800);
-    console.log("Bank slider initialized");
-  }
+  /* Bank Slider Removed - Replaced with CSS Marquee */
 
   // Number Counting Animation
   function initNumberCounting() {
@@ -203,23 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Testimonial Slider
-  function initTestimonialSlider() {
-    const slider = document.querySelector(".testimonials-slider");
-    const prevBtn = document.querySelector(".testimonial-prev");
-    const nextBtn = document.querySelector(".testimonial-next");
-
-    if (!slider) return;
-
-    // Duplicate testimonials for seamless sliding
-    const originalCards = slider.innerHTML;
-    slider.innerHTML = originalCards + originalCards;
-
-    // Hide navigation buttons since we're using auto-sliding
-    if (prevBtn && nextBtn) {
-      prevBtn.style.display = "none";
-      nextBtn.style.display = "none";
-    }
-  }
+  /* Testimonial Slider Removed - Replaced with Grid */
 
   // Mobile navigation handler
   function initMobileNav() {
@@ -446,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // CONFIGURATION: REPLACE THIS WITH YOUR DEPLOYED GOOGLE SCRIPT URL
-    const SCRIPT_URL ="https://script.google.com/macros/s/AKfycbxWU6LkLxbChylE41qKGyE0FdYpUeAm_jxCu9hgg-vTQUVJnnpTeVfCcl3azsYxZh5g/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWU6LkLxbChylE41qKGyE0FdYpUeAm_jxCu9hgg-vTQUVJnnpTeVfCcl3azsYxZh5g/exec";
 
     // Handle form submission
     async function handleFormSubmit(form, formType, msgDiv) {
