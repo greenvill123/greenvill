@@ -1,13 +1,42 @@
-Quick notes — Greenvill Associates site
+# Greenvill Associates
 
-- Bank logos:
-  - SVG placeholders are in `assets/images/*.svg`. Replace them with your actual bank logo files keeping the same filenames (`sbi.svg`, `hdfc.svg`, `icici.svg`, `axis.svg`, `canara.svg`, `bob.svg`, `pnb.svg`). Optimized SVGs (simple shapes) are preferred for fast loading.
+Professional website for Greenvill Associates, offering financial loan solutions and construction services in Trichy.
 
-- Quick callback form (Web3Forms):
-  - To enable serverless submissions, open `assets/scripts/main.js` and set the `WEB3FORMS_KEY` constant to your Web3Forms access key.
-  - If `WEB3FORMS_KEY` is empty, the form falls back to a `mailto:` submission.
+## 🚀 Features
 
-- Next steps you can ask me to do:
-  - Replace logos with supplied images and auto-optimize.
-  - Wire the form reply-to and redirect upon successful submission.
-  - Run an accessibility/SEO audit and fix items.
+*   **Modern UI/UX**: Responsive design with glassmorphism headers, smooth animations, and a clean color palette.
+*   **EMI Calculator**: Real-time loan EMI calculation tool.
+*   **Service Showcases**: Dedicated sections for Personal, Home, and Business loans, as well as Construction projects.
+*   **Contact Forms**: Integrated with Google Apps Script to save inquiries directly to Google Sheets and send email notifications.
+*   **SEO Optimized**: Technical SEO improvements for better local search visibility.
+
+## 🛠️ Tech Stack
+
+*   **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+*   **Backend**: Google Apps Script (Serverless Form Handling)
+*   **Database**: Google Sheets
+
+## 📂 Project Structure
+
+```text
+├── assets/
+│   ├── styles/     # Main stylesheets (Design System)
+│   ├── scripts/    # Application logic & Form handlers
+│   └── images/     # Optimized assets
+├── index.html      # Landing Page (Loans)
+├── construction.html # Construction Services Page
+├── contact.html    # General Contact Page
+└── README.md
+```
+
+## ⚙️ Setup & Deployment
+
+1.  Clone the repository.
+2.  Open `index.html` in any web browser.
+3.  **Backend Configuration**:
+    *   The forms are connected to a specific Google Apps Script URL in `assets/scripts/main.js`.
+    *   If you fork this project, you must deploy your own Google Script and update the `SCRIPT_URL` variable.
+
+## 📄 License
+
+All rights reserved © Greenvill Associates.
