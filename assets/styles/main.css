@@ -640,177 +640,195 @@ body {
   }
 }
 
-/* Bank Slider Section */
+/* Bank Slider Section (Infinite Marquee) */
 .bank-slider-section {
   padding: 3rem 0;
   background: var(--white);
-  position: relative;
   overflow: hidden;
+  /* Hide horizontal scrollbar */
 }
 
 .bank-slider-section h2 {
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-family: Montserrat, sans-serif;
 }
 
 .bank-slider {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 1rem 0;
   width: 100%;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  /* Hide scrollbar for Firefox */
-  -ms-overflow-style: none;
-  /* Hide scrollbar for IE and Edge */
-}
-
-/* Hide scrollbar for webkit browsers */
-.bank-slider::-webkit-scrollbar {
-  display: none;
-}
-
-.bank-logo {
-  height: 60px;
-  width: 120px;
-  transition: var(--transition);
-  background: var(--white);
-  padding: 0.8rem 1.2rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  color: var(--navy);
-  font-size: 0.9rem;
-  flex-shrink: 0;
-}
-
-/* allow bank-logo to render an image with an optional caption */
-.bank-logo {
-  flex-direction: column;
-  gap: 0.25rem;
-  padding: 0.6rem 0.8rem;
-  min-width: 110px;
-  height: auto;
-}
-
-.bank-logo-img {
-  max-height: 48px;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.bank-name {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--muted);
-  text-align: center;
-  line-height: 1;
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
+  position: relative;
+  /* Add fading gradient masks edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.bank-logo:hover {
-  filter: grayscale(0%) opacity(1);
-  transform: scale(1.05);
-  box-shadow: var(--card-shadow-hover);
+.logo-track {
+  display: flex;
+  gap: 3rem;
+  /* Spacing between logos */
+  width: max-content;
+  animation: infinite-scroll 35s linear infinite;
+  padding: 1rem 0;
 }
 
-/* slideBanks keyframes removed - using JS auto-scroll instead */
+.bank-slider:hover .logo-track {
+  animation-play-state: paused;
+}
 
-@keyframes slideTestimonials {
-  0% {
+@keyframes infinite-scroll {
+  from {
     transform: translateX(0);
   }
 
-  100% {
+  to {
     transform: translateX(-50%);
+    /* Move half the width (one full set) */
   }
+}
+
+.bank-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: auto;
+  transition: transform 0.3s ease;
+  /* Removed grayscale to show original colors */
+  opacity: 1;
+}
+
+.bank-logo:hover {
+  transform: scale(1.1);
+}
+
+.bank-logo img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  max-width: 150px;
 }
 
 .bank-note {
   text-align: center;
   color: var(--muted);
   font-size: 0.95rem;
-  margin-top: 0.75rem;
+  margin-top: 2rem;
 }
 
-/* Testimonials Section */
+/* Testimonials Section (Infinite Marquee) */
 .testimonials {
-  padding: 4rem 0;
+  padding: 5rem 0;
   background: var(--light-gray);
+  overflow: hidden;
 }
 
 .testimonials h2 {
   text-align: center;
   font-size: 2.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   font-family: Montserrat, sans-serif;
 }
 
 .testimonials-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* Add fading gradient masks edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  padding: 1rem 0;
+}
+
+.testimonial-track {
   display: flex;
   gap: 2rem;
-  overflow: hidden;
-  padding: 2rem 0;
-  /* default: desktop auto-scroll animation */
-  animation: slideTestimonials 40s linear infinite;
-  width: 200%;
-  align-items: stretch;
+  width: max-content;
+  /* Slower speed for reading readability (60s) */
+  animation: infinite-scroll 60s linear infinite;
+  padding: 1rem 0;
 }
 
-/* Fix testimonial card size on desktop so cards are consistent and readable */
-@media (min-width: 1001px) {
-  .testimonials-slider {
-    justify-content: center;
-  }
-
-  .testimonial-card {
-    flex: 0 0 320px;
-    max-width: 360px;
-    min-width: 300px;
-  }
-}
-
-/* Pause the auto-scroll on hover for desktop users */
-.testimonials-slider:hover {
-  animation-play-state: paused
+.testimonials-slider:hover .testimonial-track {
+  animation-play-state: paused;
 }
 
 .testimonial-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), var(--white));
-  padding: 2rem;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--card-shadow);
-  min-width: 360px;
-  transition: var(--transition);
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  /* Floating effect */
+  border: 1px solid rgba(0, 0, 0, 0.03);
   position: relative;
-  border-left: 6px solid var(--green);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 400px;
+  /* Fixed width for slider consistency */
+  flex-shrink: 0;
 }
 
-.testimonial-card::before {
-  content: '';
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+}
+
+.quote-icon {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  border-top-left-radius: var(--border-radius-lg);
-  border-top-right-radius: var(--border-radius-lg);
-  background: var(--gradient);
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 4rem;
+  line-height: 1;
+  color: rgba(15, 194, 122, 0.1);
+  /* Subtle primary color */
+  font-family: serif;
+}
+
+.rating-stars {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.testimonial-card blockquote {
+  margin: 0;
+  flex-grow: 1;
+  font-size: 1.05rem;
+  color: #334155;
+  /* Dark gray for readability */
+  line-height: 1.7;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.author-name {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.author-role {
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Hide navigation buttons */
+.testimonials-nav {
+  display: none;
 }
 
 .testimonial-card:hover {
