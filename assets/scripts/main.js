@@ -474,6 +474,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return parseInt(val.toString().replace(/,/g, ''));
       };
 
+      // 0. Safety Check
+      if (!amountSlider || !rateSlider || !tenureSlider || !amountInput) {
+        return; // Skip if elements don't exist
+      }
+
       // 1. Slider -> Input Sync
       amountSlider.addEventListener('input', () => {
         amountInput.value = formatCurrency(amountSlider.value);
@@ -524,13 +529,11 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       // Initial Calculation
-      if (amountSlider) {
-        // Initialize input fields with slider values
-        amountInput.value = formatCurrency(amountSlider.value);
-        rateInput.value = rateSlider.value;
-        tenureInput.value = tenureSlider.value;
-        calculateEMI(type);
-      }
+      // Initialize input fields with slider values
+      amountInput.value = formatCurrency(amountSlider.value);
+      rateInput.value = rateSlider.value;
+      tenureInput.value = tenureSlider.value;
+      calculateEMI(type);
     });
   }
 
