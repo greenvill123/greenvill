@@ -184,6 +184,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/emi-calculator.css">
     <script defer src="assets/scripts/main.js"></script>
 </head>
 
@@ -446,7 +447,7 @@
                     <div class="bank-logo"><img src="assets/images/rbl.png" alt="RBL Bank"></div>
                     <div class="bank-logo"><img src="assets/images/tata capital.png" alt="Tata Capital"></div>
                     <div class="bank-logo"><img src="assets/images/bajaj.jpg" alt="Bajaj Finserv"></div>
-                    
+
                     <!-- Set 2 (Duplicate for Infinite Loop) -->
                     <div class="bank-logo"><img src="assets/images/sbi.png" alt="SBI"></div>
                     <div class="bank-logo"><img src="assets/images/hdfc.png" alt="HDFC"></div>
@@ -476,7 +477,8 @@
                         <div class="quote-icon">❝</div>
                         <div class="rating-stars">⭐⭐⭐⭐⭐</div>
                         <blockquote>
-                            "Fast and helpful service — helped me get a personal loan within days. The team was very professional and guided me through the entire process. Highly recommended!"
+                            "Fast and helpful service — helped me get a personal loan within days. The team was very
+                            professional and guided me through the entire process. Highly recommended!"
                         </blockquote>
                         <div class="testimonial-author">
                             <div class="author-name">S. Kumar</div>
@@ -488,7 +490,8 @@
                         <div class="quote-icon">❝</div>
                         <div class="rating-stars">⭐⭐⭐⭐⭐</div>
                         <blockquote>
-                            "Professional team and smooth process for our home loan. Excellent support throughout the documentation process. Got the best interest rate in the market!"
+                            "Professional team and smooth process for our home loan. Excellent support throughout the
+                            documentation process. Got the best interest rate in the market!"
                         </blockquote>
                         <div class="testimonial-author">
                             <div class="author-name">R. Priya</div>
@@ -500,7 +503,8 @@
                         <div class="quote-icon">❝</div>
                         <div class="rating-stars">⭐⭐⭐⭐⭐</div>
                         <blockquote>
-                            "Outstanding service for my business loan. The team understood my requirements and provided the best solution. Quick approval and competitive rates."
+                            "Outstanding service for my business loan. The team understood my requirements and provided
+                            the best solution. Quick approval and competitive rates."
                         </blockquote>
                         <div class="testimonial-author">
                             <div class="author-name">M. Rajesh</div>
@@ -512,7 +516,8 @@
                         <div class="quote-icon">❝</div>
                         <div class="rating-stars">⭐⭐⭐⭐⭐</div>
                         <blockquote>
-                            "Excellent experience. Transparent and hassle-free vehicle loan process. I got my car loan approved within 2 days with minimal paperwork!"
+                            "Excellent experience. Transparent and hassle-free vehicle loan process. I got my car loan
+                            approved within 2 days with minimal paperwork!"
                         </blockquote>
                         <div class="testimonial-author">
                             <div class="author-name">K. Lakshmi</div>
@@ -525,7 +530,8 @@
                         <div class="quote-icon">❝</div>
                         <div class="rating-stars">⭐⭐⭐⭐⭐</div>
                         <blockquote>
-                            "Fast and helpful service — helped me get a personal loan within days. The team was very professional and guided me through the entire process. Highly recommended!"
+                            "Fast and helpful service — helped me get a personal loan within days. The team was very
+                            professional and guided me through the entire process. Highly recommended!"
                         </blockquote>
                         <div class="testimonial-author">
                             <div class="author-name">S. Kumar</div>
@@ -537,7 +543,8 @@
                         <div class="quote-icon">❝</div>
                         <div class="rating-stars">⭐⭐⭐⭐⭐</div>
                         <blockquote>
-                            "Professional team and smooth process for our home loan. Excellent support throughout the documentation process. Got the best interest rate in the market!"
+                            "Professional team and smooth process for our home loan. Excellent support throughout the
+                            documentation process. Got the best interest rate in the market!"
                         </blockquote>
                         <div class="testimonial-author">
                             <div class="author-name">R. Priya</div>
@@ -549,7 +556,8 @@
                         <div class="quote-icon">❝</div>
                         <div class="rating-stars">⭐⭐⭐⭐⭐</div>
                         <blockquote>
-                            "Outstanding service for my business loan. The team understood my requirements and provided the best solution. Quick approval and competitive rates."
+                            "Outstanding service for my business loan. The team understood my requirements and provided
+                            the best solution. Quick approval and competitive rates."
                         </blockquote>
                         <div class="testimonial-author">
                             <div class="author-name">M. Rajesh</div>
@@ -561,7 +569,8 @@
                         <div class="quote-icon">❝</div>
                         <div class="rating-stars">⭐⭐⭐⭐⭐</div>
                         <blockquote>
-                            "Excellent experience. Transparent and hassle-free vehicle loan process. I got my car loan approved within 2 days with minimal paperwork!"
+                            "Excellent experience. Transparent and hassle-free vehicle loan process. I got my car loan
+                            approved within 2 days with minimal paperwork!"
                         </blockquote>
                         <div class="testimonial-author">
                             <div class="author-name">K. Lakshmi</div>
@@ -610,58 +619,175 @@
             <h2>Loan Calculators</h2>
             <p class="lead">Calculate your EMI and plan your finances with our comprehensive loan calculators.</p>
 
-            <div class="calculator-tabs">
-                <button class="tab-btn active" data-tab="emi">EMI Calculator</button>
-                <button class="tab-btn" data-tab="eligibility">Eligibility Check</button>
-                <button class="tab-btn" data-tab="comparison">Loan Comparison</button>
-            </div>
+            <div class="emi-section-v2">
+                <div class="emi-container">
+                    <div class="emi-tabs">
+                        <button class="emi-tab-btn active" onclick="switchCalculator('personal')">Personal</button>
+                        <button class="emi-tab-btn" onclick="switchCalculator('housing')">Housing</button>
+                        <button class="emi-tab-btn" onclick="switchCalculator('vehicle')">Vehicle</button>
+                    </div>
 
-            <div class="calculator-content">
-                <div class="calculator-panel active" id="emi-panel">
-                    <div class="emi-calculator">
-                        <div class="calculator-inputs">
-                            <div class="input-group">
-                                <label for="loanAmount">Loan Amount (₹)</label>
-                                <input type="number" id="loanAmount" min="10000" value="100000"
-                                    aria-label="Loan Amount">
-                                <div class="input-range">
-                                    <input type="range" id="loanAmountRange" min="10000" max="10000000" value="100000"
-                                        step="10000">
-                                    <span class="range-labels">
-                                        <span>₹10K</span>
-                                        <span>₹1Cr</span>
-                                    </span>
-                                </div>
+                    <!-- Personal Loan -->
+                    <div class="emi-calculator-card active" id="calc-personal">
+                        <!-- Amount -->
+                        <div class="input-row">
+                            <div class="input-header-compact">
+                                <span class="input-label">Loan Amount (₹)</span>
+                                <input type="text" class="input-field-styled" id="p-amount-input" value="5,00,000">
                             </div>
-                            <div class="input-group">
-                                <label for="interestRate">Interest Rate (% p.a.)</label>
-                                <input type="number" id="interestRate" min="1" step="0.01" value="10"
-                                    aria-label="Interest Rate">
-                                <div class="input-range">
-                                    <input type="range" id="interestRateRange" min="1" max="30" value="10" step="0.1">
-                                    <span class="range-labels">
-                                        <span>1%</span>
-                                        <span>30%</span>
-                                    </span>
-                                </div>
+                            <input type="range" class="range-slider" id="p-amount-slider" min="10000" max="5000000"
+                                step="10000" value="500000">
+                            <div class="min-max-labels"><span>₹10K</span><span>₹50L</span></div>
+                        </div>
+
+                        <!-- Ratw -->
+                        <div class="input-row">
+                            <div class="input-header-compact">
+                                <span class="input-label">Interest Rate (% p.a)</span>
+                                <input type="number" class="input-field-styled" id="p-rate-input" value="12" step="0.1">
                             </div>
-                            <div class="input-group">
-                                <label for="tenure">Tenure (years)</label>
-                                <input type="number" id="tenure" min="1" value="5" aria-label="Tenure">
-                                <div class="input-range">
-                                    <input type="range" id="tenureRange" min="1" max="30" value="5" step="1">
-                                    <span class="range-labels">
-                                        <span>1 year</span>
-                                        <span>30 years</span>
-                                    </span>
+                            <input type="range" class="range-slider" id="p-rate-slider" min="8" max="25" step="0.1"
+                                value="12">
+                            <div class="min-max-labels"><span>8%</span><span>25%</span></div>
+                        </div>
+
+                        <!-- Tenure -->
+                        <div class="input-row">
+                            <div class="input-header-compact">
+                                <span class="input-label">Tenure (Years)</span>
+                                <input type="number" class="input-field-styled" id="p-tenure-input" value="3">
+                            </div>
+                            <input type="range" class="range-slider" id="p-tenure-slider" min="1" max="7" step="1"
+                                value="3">
+                            <div class="min-max-labels"><span>1 Yr</span><span>7 Yrs</span></div>
+                        </div>
+
+                        <!-- Result -->
+                        <div class="emi-result-compact">
+                            <div class="result-title">Your Monthly EMI</div>
+                            <div class="result-value-main" id="p-emi-result">₹0</div>
+                            <div class="result-breakdown">
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Total Interest</span>
+                                    <span class="breakdown-value" id="p-total-interest">₹0</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Total Amount</span>
+                                    <span class="breakdown-value" id="p-total-amount">₹0</span>
                                 </div>
                             </div>
                         </div>
-                        <button onclick="calculateEMI()" class="btn btn-primary">Calculate EMI</button>
-                        <div id="emiResult" class="calculator-result" aria-live="polite"></div>
+                    </div>
+
+                    <!-- Housing Loan -->
+                    <div class="emi-calculator-card" id="calc-housing">
+                        <!-- Amount -->
+                        <div class="input-row">
+                            <div class="input-header-compact">
+                                <span class="input-label">Loan Amount (₹)</span>
+                                <input type="text" class="input-field-styled" id="h-amount-input" value="25,00,000">
+                            </div>
+                            <input type="range" class="range-slider" id="h-amount-slider" min="500000" max="10000000"
+                                step="50000" value="2500000">
+                            <div class="min-max-labels"><span>₹5L</span><span>₹1Cr</span></div>
+                        </div>
+
+                        <!-- Ratw -->
+                        <div class="input-row">
+                            <div class="input-header-compact">
+                                <span class="input-label">Interest Rate (% p.a)</span>
+                                <input type="number" class="input-field-styled" id="h-rate-input" value="8.5"
+                                    step="0.1">
+                            </div>
+                            <input type="range" class="range-slider" id="h-rate-slider" min="6" max="15" step="0.1"
+                                value="8.5">
+                            <div class="min-max-labels"><span>6%</span><span>15%</span></div>
+                        </div>
+
+                        <!-- Tenure -->
+                        <div class="input-row">
+                            <div class="input-header-compact">
+                                <span class="input-label">Tenure (Years)</span>
+                                <input type="number" class="input-field-styled" id="h-tenure-input" value="20">
+                            </div>
+                            <input type="range" class="range-slider" id="h-tenure-slider" min="5" max="30" step="1"
+                                value="20">
+                            <div class="min-max-labels"><span>5 Yrs</span><span>30 Yrs</span></div>
+                        </div>
+
+                        <!-- Result -->
+                        <div class="emi-result-compact">
+                            <div class="result-title">Your Monthly EMI</div>
+                            <div class="result-value-main" id="h-emi-result">₹0</div>
+                            <div class="result-breakdown">
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Total Interest</span>
+                                    <span class="breakdown-value" id="h-total-interest">₹0</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Total Amount</span>
+                                    <span class="breakdown-value" id="h-total-amount">₹0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Loan -->
+                    <div class="emi-calculator-card" id="calc-vehicle">
+                        <!-- Amount -->
+                        <div class="input-row">
+                            <div class="input-header-compact">
+                                <span class="input-label">Loan Amount (₹)</span>
+                                <input type="text" class="input-field-styled" id="v-amount-input" value="5,00,000">
+                            </div>
+                            <input type="range" class="range-slider" id="v-amount-slider" min="50000" max="5000000"
+                                step="10000" value="500000">
+                            <div class="min-max-labels"><span>₹50K</span><span>₹50L</span></div>
+                        </div>
+
+                        <!-- Ratw -->
+                        <div class="input-row">
+                            <div class="input-header-compact">
+                                <span class="input-label">Interest Rate (% p.a)</span>
+                                <input type="number" class="input-field-styled" id="v-rate-input" value="9.5"
+                                    step="0.1">
+                            </div>
+                            <input type="range" class="range-slider" id="v-rate-slider" min="7" max="20" step="0.1"
+                                value="9.5">
+                            <div class="min-max-labels"><span>7%</span><span>20%</span></div>
+                        </div>
+
+                        <!-- Tenure -->
+                        <div class="input-row">
+                            <div class="input-header-compact">
+                                <span class="input-label">Tenure (Years)</span>
+                                <input type="number" class="input-field-styled" id="v-tenure-input" value="5">
+                            </div>
+                            <input type="range" class="range-slider" id="v-tenure-slider" min="1" max="10" step="1"
+                                value="5">
+                            <div class="min-max-labels"><span>1 Yr</span><span>10 Yrs</span></div>
+                        </div>
+
+                        <!-- Result -->
+                        <div class="emi-result-compact">
+                            <div class="result-title">Your Monthly EMI</div>
+                            <div class="result-value-main" id="v-emi-result">₹0</div>
+                            <div class="result-breakdown">
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Total Interest</span>
+                                    <span class="breakdown-value" id="v-total-interest">₹0</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <span class="breakdown-label">Total Amount</span>
+                                    <span class="breakdown-value" id="v-total-amount">₹0</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="calculator-content">
                 <div class="calculator-panel" id="eligibility-panel">
                     <div class="eligibility-calculator">
                         <h3>Check Your Loan Eligibility</h3>
@@ -715,7 +841,8 @@
                 </div>
             </div>
 
-            <p class="emi-note">Use our calculators to estimate your monthly repayments, check eligibility, and compare
+            <p class="emi-note">Use our calculators to estimate your monthly repayments, check eligibility, and
+                compare
                 loan options to plan your finances smartly.</p>
         </section>
 
