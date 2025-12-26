@@ -195,47 +195,26 @@ document.addEventListener("DOMContentLoaded", function () {
   // Range Sliders
   function initRangeSliders() {
     // Loan Amount Range
+    // Auto-format loan amount with commas as user types
     const loanAmountInput = document.getElementById("loanAmount");
-    const loanAmountRange = document.getElementById("loanAmountRange");
-
-    if (loanAmountInput && loanAmountRange) {
-      loanAmountRange.addEventListener("input", () => {
-        loanAmountInput.value = loanAmountRange.value;
-      });
-
-      loanAmountInput.addEventListener("input", () => {
-        loanAmountRange.value = loanAmountInput.value;
+    if (loanAmountInput) {
+      loanAmountInput.addEventListener("input", function (e) {
+        // Remove existing commas and non-numeric characters
+        let value = this.value.replace(/[^0-9]/g, "");
+        if (value) {
+          // Format with Indian numbering system (or standard locale)
+          this.value = parseInt(value, 10).toLocaleString('en-IN');
+        } else {
+          this.value = "";
+        }
       });
     }
 
-    // Interest Rate Range
+    // Input placeholders for better UX
     const interestRateInput = document.getElementById("interestRate");
-    const interestRateRange = document.getElementById("interestRateRange");
-
-    if (interestRateInput && interestRateRange) {
-      interestRateRange.addEventListener("input", () => {
-        interestRateInput.value = interestRateRange.value;
-      });
-
-      interestRateInput.addEventListener("input", () => {
-        interestRateRange.value = interestRateInput.value;
-      });
-    }
-
-    // Tenure Range
     const tenureInput = document.getElementById("tenure");
-    const tenureRange = document.getElementById("tenureRange");
-
-    if (tenureInput && tenureRange) {
-      tenureRange.addEventListener("input", () => {
-        tenureInput.value = tenureRange.value;
-      });
-
-      tenureInput.addEventListener("input", () => {
-        tenureRange.value = tenureInput.value;
-      });
-    }
   }
+
 
   // Form Validation with enhanced security and UX
   function initFormValidation() {
@@ -470,54 +449,124 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // EMI Calculation
-  window.calculateEMI = function () {
-    const principal =
-      parseFloat(document.getElementById("loanAmount").value) || 0;
-    const rate = parseFloat(document.getElementById("interestRate").value) || 0;
-    const time = parseFloat(document.getElementById("tenure").value) || 0;
+  // EMI Calculator V3 Logic (Compact + 2-Way Binding)
+  function initEMICalculatorV3() {
+    const calculators = ['p', 'h', 'v']; // Personal, Housing, Vehicle prefixes
 
-    if (principal <= 0 || rate <= 0 || time <= 0) {
-      document.getElementById("emiResult").innerHTML =
-        '<div class="error">Please enter valid values</div>';
-      return;
+    calculators.forEach(type => {
+      // Elements
+      const amountSlider = document.getElementById(`${type}-amount-slider`);
+      const rateSlider = document.getElementById(`${type}-rate-slider`);
+      const tenureSlider = document.getElementById(`${type}-tenure-slider`);
+
+      const amountInput = document.getElementById(`${type}-amount-input`);
+      const rateInput = document.getElementById(`${type}-rate-input`);
+      const tenureInput = document.getElementById(`${type}-tenure-input`);
+
+      // Helpers
+      const formatCurrency = (val) => {
+        if (!val) return '';
+        return parseInt(val.toString().replace(/,/g, '')).toLocaleString('en-IN');
+      };
+
+      const parseCurrency = (val) => {
+        if (!val) return 0;
+        return parseInt(val.toString().replace(/,/g, ''));
+      };
+
+      // 1. Slider -> Input Sync
+      amountSlider.addEventListener('input', () => {
+        amountInput.value = formatCurrency(amountSlider.value);
+        calculateEMI(type);
+      });
+      rateSlider.addEventListener('input', () => {
+        rateInput.value = rateSlider.value;
+        calculateEMI(type);
+      });
+      tenureSlider.addEventListener('input', () => {
+        tenureInput.value = tenureSlider.value;
+        calculateEMI(type);
+      });
+
+      // 2. Input -> Slider Sync
+      amountInput.addEventListener('change', () => {
+        const val = parseCurrency(amountInput.value);
+        // Clamp values
+        const min = parseInt(amountSlider.min);
+        const max = parseInt(amountSlider.max);
+        let safeVal = Math.max(min, Math.min(val, max));
+
+        amountSlider.value = safeVal;
+        amountInput.value = formatCurrency(safeVal); // Re-format
+        calculateEMI(type);
+      });
+
+      rateInput.addEventListener('change', () => {
+        let val = parseFloat(rateInput.value);
+        const min = parseFloat(rateSlider.min);
+        const max = parseFloat(rateSlider.max);
+        let safeVal = Math.max(min, Math.min(val, max));
+
+        rateSlider.value = safeVal;
+        rateInput.value = safeVal;
+        calculateEMI(type);
+      });
+
+      tenureInput.addEventListener('change', () => {
+        let val = parseInt(tenureInput.value);
+        const min = parseInt(tenureSlider.min);
+        const max = parseInt(tenureSlider.max);
+        let safeVal = Math.max(min, Math.min(val, max));
+
+        tenureSlider.value = safeVal;
+        tenureInput.value = safeVal;
+        calculateEMI(type);
+      });
+
+      // Initial Calculation
+      if (amountSlider) {
+        // Initialize input fields with slider values
+        amountInput.value = formatCurrency(amountSlider.value);
+        rateInput.value = rateSlider.value;
+        tenureInput.value = tenureSlider.value;
+        calculateEMI(type);
+      }
+    });
+  }
+
+  function calculateEMI(type) {
+    // Get raw values from sliders (they are the truth)
+    const P = parseFloat(document.getElementById(`${type}-amount-slider`).value);
+    const r = parseFloat(document.getElementById(`${type}-rate-slider`).value) / 12 / 100;
+    const n = parseFloat(document.getElementById(`${type}-tenure-slider`).value) * 12;
+
+    let emi = 0;
+    if (P > 0 && r > 0 && n > 0) {
+      emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
     }
 
-    const monthlyRate = rate / (12 * 100);
-    const months = time * 12;
+    const totalPayment = emi * n;
+    const totalInterest = totalPayment - P;
 
-    const emi =
-      (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) /
-      (Math.pow(1 + monthlyRate, months) - 1);
+    // Update Result
+    document.getElementById(`${type}-emi-result`).textContent = '₹' + Math.round(emi).toLocaleString('en-IN');
+    document.getElementById(`${type}-total-amount`).textContent = '₹' + Math.round(totalPayment).toLocaleString('en-IN');
+    document.getElementById(`${type}-total-interest`).textContent = '₹' + Math.round(totalInterest).toLocaleString('en-IN');
+  }
 
-    const totalAmount = emi * months;
-    const totalInterest = totalAmount - principal;
+  // Tab Switcher
+  window.switchCalculator = function (type) {
+    // Buttons
+    document.querySelectorAll('.emi-tab-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
 
-    document.getElementById("emiResult").innerHTML = `
-            <div class="calculator-result">
-                <h3>EMI Calculation Result</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                    <div style="text-align: center; padding: 1rem; background: var(--gradient-light); border-radius: 8px;">
-                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--green);">₹${Math.round(
-      emi
-    ).toLocaleString()}</div>
-                        <div style="font-size: 0.9rem; color: var(--muted);">Monthly EMI</div>
-                    </div>
-                    <div style="text-align: center; padding: 1rem; background: var(--gradient-light); border-radius: 8px;">
-                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--navy);">₹${Math.round(
-      totalAmount
-    ).toLocaleString()}</div>
-                        <div style="font-size: 0.9rem; color: var(--muted);">Total Amount</div>
-                    </div>
-                    <div style="text-align: center; padding: 1rem; background: var(--gradient-light); border-radius: 8px;">
-                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent);">₹${Math.round(
-      totalInterest
-    ).toLocaleString()}</div>
-                        <div style="font-size: 0.9rem; color: var(--muted);">Total Interest</div>
-                    </div>
-                </div>
-            </div>
-        `;
+    // Cards
+    document.querySelectorAll('.emi-calculator-card').forEach(card => card.classList.remove('active'));
+    document.getElementById(`calc-${type}`).classList.add('active');
   };
+
+  // Initialize Calculators
+  initEMICalculatorV3();
 
   // Eligibility Check
   window.checkEligibility = function () {
