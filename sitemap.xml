@@ -20,9 +20,45 @@
   </url>
   <url>
     <loc>https://www.greenvillassociates.com/contact.html</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.greenvillassociates.com/personal-loan.html</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.greenvillassociates.com/home-loan.html</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.greenvillassociates.com/business-loan.html</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.greenvillassociates.com/property-loan.html</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.greenvillassociates.com/mortgage-loan.html</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.greenvillassociates.com/vehicle-loan.html</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.greenvillassociates.com/privacy.html</loc>
