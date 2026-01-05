@@ -404,6 +404,36 @@ body {
   overflow: hidden;
 }
 
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.benefit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefit-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--navy);
+  line-height: 1.5;
+}
+
+.benefit-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
 .service-card::before {
   content: '';
   position: absolute;
@@ -481,6 +511,13 @@ body {
 .cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(15, 194, 122, 0.3);
+}
+
+.service-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 
 /* Loan Comparison Section */
@@ -768,6 +805,7 @@ body {
   height: 100%;
   width: 400px;
   /* Fixed width for slider consistency */
+  max-width: 100%;
   flex-shrink: 0;
 }
 
@@ -829,6 +867,57 @@ body {
 /* Hide navigation buttons */
 .testimonials-nav {
   display: none;
+}
+
+/* Testimonial Responsiveness - Consolidating overrides here to avoid jerky animation */
+@media (max-width: 1024px) {
+  .testimonial-card {
+    width: 350px;
+    padding: 2rem;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    width: 320px;
+    padding: 1.75rem;
+    flex-shrink: 0;
+  }
+
+  .testimonials-slider {
+    /* Less aggressive mask for smaller screens to keep content visible */
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+
+  .testimonial-track {
+    animation-duration: 45s;
+    /* Slightly faster on smaller screens */
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    width: 290px;
+    padding: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .testimonials {
+    padding: 3rem 0;
+  }
+
+  .testimonials h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .testimonial-track {
+    animation-duration: 35s;
+    /* Optimized for narrow viewports */
+  }
 }
 
 .testimonial-card:hover {
@@ -1321,24 +1410,6 @@ a:focus,
     gap: 1rem;
   }
 
-  /* On medium screens switch testimonials to a horizontal swipeable slider (no auto-animation) */
-  .testimonials-slider {
-    flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    animation: none;
-    width: auto;
-    padding: 1rem 0;
-    gap: 1rem;
-  }
-
-  .testimonial-card {
-    min-width: 80%;
-    max-width: 420px;
-    scroll-snap-align: center;
-  }
-
   .testimonials-nav {
     display: none
   }
@@ -1346,15 +1417,7 @@ a:focus,
 
 /* Mobile/Small screens ensure cards don't overflow horizontally */
 @media (max-width: 480px) {
-  .testimonials-slider {
-    gap: 1rem;
-    padding: 0 0.5rem;
-  }
-
-  .testimonial-card {
-    min-width: 88%;
-    max-width: 360px;
-  }
+  /* Removed old testimonial overrides */
 }
 
 /* Mobile navigation styles */
@@ -1528,10 +1591,9 @@ body.mobile-nav-open .nav .nav-cta {
     min-width: 120px;
   }
 
-  /* Tweak testimonials for smaller tablets */
-  .testimonial-card {
-    min-width: 85%;
-    max-width: 480px;
+  .stat {
+    flex: 1;
+    min-width: 120px;
   }
 }
 
@@ -1564,10 +1626,8 @@ body.mobile-nav-open .nav .nav-cta {
     padding: 1.5rem
   }
 
-  /* Very small screens - ensure testimonials fit comfortably */
-  .testimonial-card {
-    min-width: 90%;
-    max-width: 420px
+  .hero-form {
+    padding: 1.5rem
   }
 }
 
@@ -1581,12 +1641,8 @@ body.mobile-nav-open .nav .nav-cta {
     font-size: 3rem
   }
 
-  .testimonials-slider {
-    gap: 3rem
-  }
-
-  .testimonial-card {
-    min-width: 420px
+  .hero-copy h1 {
+    font-size: 3rem
   }
 }
 
@@ -1596,9 +1652,8 @@ body.mobile-nav-open .nav .nav-cta {
     font-size: 1.6rem
   }
 
-  .testimonial-card {
-    padding: 1rem;
-    min-width: 95%
+  .hero-copy h1 {
+    font-size: 1.6rem
   }
 }
 
@@ -1616,6 +1671,16 @@ body.mobile-nav-open .nav .nav-cta {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -1743,10 +1808,7 @@ body.mobile-nav-open .nav .nav-cta {
     font-size: 3rem;
   }
 
-  .loan-services h2,
   .loan-comparison h2,
-  .testimonials h2,
-  .faq h2,
   .emi-calculator-section h2 {
     font-size: 2.5rem;
   }
@@ -1927,7 +1989,6 @@ body.mobile-nav-open .nav .nav-cta {
   }
 
   .service-card,
-  .testimonial-card,
   .calculator-panel {
     padding: 1.2rem;
   }
