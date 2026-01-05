@@ -183,20 +183,46 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                     <div class="service-card" style="border-top: 4px solid var(--primary);">
                         <h3>Property Loan Details</h3>
-                        <ul style="list-style: none; padding: 0; line-height: 2;">
-                            <li><strong>Interest Rate:</strong> 9.50% - 15.00% p.a.</li>
-                            <li><strong>Loan Amount:</strong> ₹10 Lakhs to ₹5 Crores</li>
-                            <li><strong>Tenure:</strong> 5 Years to 15 Years</li>
-                            <li><strong>Processing Fee:</strong> 1% - 2% of loan amount</li>
-                        </ul>
+                        <div class="loan-details-container">
+                            <table class="loan-details-table">
+                                <thead>
+                                    <tr>
+                                        <th>Particulars</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="particulars-col">Interest Rate</td>
+                                        <td class="details-col">9.50% - 15.00% p.a.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="particulars-col">Loan Amount</td>
+                                        <td class="details-col">₹10 Lakhs to ₹5 Crores</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="particulars-col">Tenure</td>
+                                        <td class="details-col">5 Years to 15 Years</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="particulars-col">Processing Fee</td>
+                                        <td class="details-col">1% - 2% of loan amount</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="particulars-col">Loan Providers</td>
+                                        <td class="details-col">25+</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="service-card" style="border-top: 4px solid var(--accent);">
                         <h3>Key Benefits</h3>
-                        <ul style="list-style: none; padding: 0; line-height: 2;">
-                            <li><i style="color: var(--primary);">✓</i> Lower Interest than Personal Loans</li>
-                            <li><i style="color: var(--primary);">✓</i> Residential & Commercial Property Accepted</li>
-                            <li><i style="color: var(--primary);">✓</i> Continuous Property Usage</li>
-                            <li><i style="color: var(--primary);">✓</i> Simple Eligibility</li>
+                        <ul class="benefit-card-list">
+                            <li class="benefit-card-item"><i>✓</i> Lower Interest than Personal Loans</li>
+                            <li class="benefit-card-item"><i>✓</i> Residential & Commercial Property Accepted</li>
+                            <li class="benefit-card-item"><i>✓</i> Continuous Property Usage</li>
+                            <li class="benefit-card-item"><i>✓</i> Simple Eligibility</li>
                         </ul>
                     </div>
                 </div>

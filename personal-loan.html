@@ -200,14 +200,46 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                     <div class="service-card" style="border-top: 4px solid var(--primary);">
                         <h3>Loan Product Details</h3>
-                        <ul style="list-style: none; padding: 0; line-height: 2;">
-                            <li><strong>Min Loan:</strong> ₹50,000</li>
-                            <li><strong>Max Loan:</strong> ₹55 Lakhs</li>
-                            <li><strong>Interest Rate:</strong> 9.99% to 36% p.a. (Fixed/Reducing)</li>
-                            <li><strong>Tenure:</strong> 12 months to 96 months</li>
-                            <li><strong>APR Range:</strong> 10.5% to 38% (Includes interest + processing fees)</li>
-                            <li><strong>Processing Fee:</strong> Up to 3% - 5%</li>
-                        </ul>
+                        <div class="loan-details-container">
+                            <table class="loan-details-table">
+                                <thead>
+                                    <tr>
+                                        <th>Particulars</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="particulars-col">Minimum Loan Amount</td>
+                                        <td class="details-col">₹50,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="particulars-col">Maximum Loan Amount</td>
+                                        <td class="details-col">₹55 Lakhs</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="particulars-col">Interest Rates</td>
+                                        <td class="details-col">Starting from 9.99% p.a.*</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="particulars-col">Minimum Tenure</td>
+                                        <td class="details-col">12 months</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="particulars-col">Maximum Tenure</td>
+                                        <td class="details-col">96 months</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="particulars-col">Processing Fee</td>
+                                        <td class="details-col">Up to 3% - 5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="particulars-col">Loan Providers</td>
+                                        <td class="details-col">25+</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <div
                             style="margin-top: 1.5rem; padding: 1rem; background: var(--light-gray); border-radius: 8px; font-size: 0.85rem; border-left: 4px solid var(--accent);">
                             <p style="font-weight: 700; color: var(--navy); margin-bottom: 0.5rem;">Representative
@@ -226,11 +258,11 @@
                     </div>
                     <div class="service-card" style="border-top: 4px solid var(--accent);">
                         <h3>Key Benefits</h3>
-                        <ul style="list-style: none; padding: 0; line-height: 2;">
-                            <li><i style="color: var(--primary);">✓</i> Compare from 25+ lenders</li>
-                            <li><i style="color: var(--primary);">✓</i> Multi-purpose (Wedding, Medical, Edu)</li>
-                            <li><i style="color: var(--primary);">✓</i> No Collateral required</li>
-                            <li><i style="color: var(--primary);">✓</i> Zero Hidden Charges</li>
+                        <ul class="benefit-card-list">
+                            <li class="benefit-card-item"><i>✓</i> Compare from 25+ lenders</li>
+                            <li class="benefit-card-item"><i>✓</i> Multi-purpose (Wedding, Medical, Edu)</li>
+                            <li class="benefit-card-item"><i>✓</i> No Collateral required</li>
+                            <li class="benefit-card-item"><i>✓</i> Zero Hidden Charges</li>
                         </ul>
                     </div>
                 </div>
@@ -371,12 +403,13 @@
             </div>
             <div class="footer-column">
                 <h4>Location</h4>
-            <div class="map-embed">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.526436665046!2d78.6926313!3d10.8475283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf50ff1b539c5%3A0x66c3a62024223652!2sChathram%20Bus%20Stand%2C%20Tiruchirappalli%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
+                <div class="map-embed">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.526436665046!2d78.6926313!3d10.8475283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf50ff1b539c5%3A0x66c3a62024223652!2sChathram%20Bus%20Stand%2C%20Tiruchirappalli%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                        width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
         </div>
 
