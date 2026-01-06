@@ -168,7 +168,7 @@ body {
 
 /* Hero Section */
 .hero {
-  padding: 6rem 0 4rem;
+  padding: 4rem 0 3rem;
   background: radial-gradient(circle at top right, rgba(15, 194, 122, 0.05), transparent 40%), var(--bg);
   margin-top: 100px;
   /* Fixed header collision */
@@ -2028,6 +2028,7 @@ body.mobile-nav-open .nav .nav-cta {
     font-size: 0.9rem;
   }
 }
+
 /* Loan Details Table Styling */
 .loan-details-container {
   overflow-x: auto;
@@ -2066,7 +2067,8 @@ body.mobile-nav-open .nav .nav-cta {
 }
 
 .loan-details-table tr:nth-child(even) {
-  background: rgba(15, 194, 122, 0.03); /* Subtle brand green tint */
+  background: rgba(15, 194, 122, 0.03);
+  /* Subtle brand green tint */
 }
 
 .loan-details-table .particulars-col {
@@ -2074,7 +2076,8 @@ body.mobile-nav-open .nav .nav-cta {
   color: var(--navy);
   width: 45%;
   min-width: 200px;
-  padding-right: 3rem; /* Extra space between label and value */
+  padding-right: 3rem;
+  /* Extra space between label and value */
 }
 
 .loan-details-table .details-col {
@@ -2119,19 +2122,36 @@ body.mobile-nav-open .nav .nav-cta {
 }
 
 /* Staggered Delays for Benefit Cards */
-.benefit-card-item:nth-child(1) { animation-delay: 0.1s; }
-.benefit-card-item:nth-child(2) { animation-delay: 0.2s; }
-.benefit-card-item:nth-child(3) { animation-delay: 0.3s; }
-.benefit-card-item:nth-child(4) { animation-delay: 0.4s; }
-.benefit-card-item:nth-child(5) { animation-delay: 0.5s; }
-.benefit-card-item:nth-child(6) { animation-delay: 0.6s; }
+.benefit-card-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.benefit-card-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.benefit-card-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.benefit-card-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.benefit-card-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.benefit-card-item:nth-child(6) {
+  animation-delay: 0.6s;
+}
 
 /* Desktop Hover Effect */
 @media (min-width: 1025px) {
   .benefit-card-item {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
   .benefit-card-item:hover {
     transform: translateX(5px) translateY(-2px);
     box-shadow: 0 6px 15px rgba(15, 194, 122, 0.15);
