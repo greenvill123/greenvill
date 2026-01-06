@@ -754,11 +754,12 @@ body {
   margin-top: 2rem;
 }
 
-/* Testimonials Section (Infinite Marquee) */
+/* Testimonials Section (Premium Full-Width) */
 .testimonials {
   padding: 5rem 0;
-  background: var(--light-gray);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 50%, #f1f8f4 100%);
   overflow: hidden;
+  position: relative;
 }
 
 .testimonials h2 {
@@ -772,19 +773,17 @@ body {
   width: 100%;
   overflow: hidden;
   position: relative;
-  /* Add fading gradient masks edges */
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  /* Full-width edge-to-edge */
   padding: 1rem 0;
 }
 
 .testimonial-track {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   width: max-content;
-  /* Slower speed for reading readability (60s) */
-  animation: infinite-scroll 60s linear infinite;
-  padding: 1rem 0;
+  /* Smooth infinite scroll (70s for better readability) */
+  animation: infinite-scroll 70s linear infinite;
+  padding: 1rem 2rem;
 }
 
 .testimonials-slider:hover .testimonial-track {
@@ -792,37 +791,64 @@ body {
 }
 
 .testimonial-card {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-  /* Floating effect */
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: 20px;
+  box-shadow: 0 15px 45px -10px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  border: 1px solid rgba(15, 194, 122, 0.08);
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 400px;
-  /* Fixed width for slider consistency */
+  width: 420px;
   max-width: 100%;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0fc27a, #10b26c, #0fc27a);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .testimonial-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 60px -10px rgba(15, 194, 122, 0.15),
+    0 0 0 1px rgba(15, 194, 122, 0.2) inset;
 }
 
 .quote-icon {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  font-size: 4rem;
+  font-size: 5rem;
   line-height: 1;
-  color: rgba(15, 194, 122, 0.1);
-  /* Subtle primary color */
+  color: rgba(15, 194, 122, 0.08);
   font-family: serif;
+  font-weight: bold;
 }
 
 .rating-stars {
