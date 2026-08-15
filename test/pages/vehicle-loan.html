@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Car & Vehicle Loans in Trichy by Greenvill Associates. 100% on-road funding, starting at 8.75% p.a., tenure up to 7 years. Instant bank sanction.">
+  <title>Vehicle Loan Advisory in Trichy | Greenvill Associates V2</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <!-- Ambient 2D Orbs -->
+  <div class="bg-vector-shape vector-shape-1"></div>
+  <div class="bg-vector-shape vector-shape-2"></div>
+
+  <!-- Header & Navigation -->
+  <header class="header scrolled" id="header">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo-wrapper">
+        <div class="logo-badge">G</div>
+        <div class="logo-text">
+          <span class="logo-title">GREENVILL</span>
+          <span class="logo-subtitle">ASSOCIATES V2</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="../index.html#home" class="nav-link">Home</a></li>
+          <li><a href="../index.html#loans" class="nav-link active">All Loans</a></li>
+          <li><a href="#eligibility" class="nav-link">Eligibility</a></li>
+          <li><a href="#calculator" class="nav-link">EMI Calculator</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="btn btn-primary" onclick="openApplyModal('Vehicle Loan Page')">Apply For Vehicle Loan</button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: 100px;">
+    <!-- Hero Section -->
+    <section class="section-padding bg-gradient-soft" style="padding-top: 60px;">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content reveal reveal-fade-left">
+            <span class="section-tag">Fast-Track Auto Finance</span>
+            <h1 class="hero-headline" style="font-size: 3rem;">
+              Drive Your Dream Vehicle With <span>100% On-Road Funding</span>
+            </h1>
+            <p class="hero-subhead">
+              Personal cars, commercial fleets, and luxury vehicles financed with rates starting at <strong>8.75% p.a.</strong> and flexible tenure options up to 7 years.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; background: rgba(255,255,255,0.9); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Interest Rate</div>
+                <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--primary-dark);">8.75% p.a.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Max Funding</div>
+                <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--primary-dark);">100% On-Road</div>
+              </div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Max Tenure</div>
+                <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--primary-dark);">7 Years</div>
+              </div>
+            </div>
+
+            <div class="hero-cta">
+              <button class="btn btn-primary btn-lg" onclick="openApplyModal('Vehicle Loan Hero')">Apply For Vehicle Loan</button>
+              <a href="#calculator" class="btn btn-secondary btn-lg">Calculate EMI</a>
+            </div>
+          </div>
+
+          <div class="hero-media-wrapper reveal reveal-fade-right">
+            <div class="hero-image-card">
+              <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80" alt="Customer accepting vehicle key after fast-track loan approval">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documents -->
+    <section class="section-padding bg-subtle-light" id="documents">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Documentation</span>
+          <h2 class="section-title">Required Documents For Vehicle Loan</h2>
+        </div>
+
+        <div class="doc-content-box reveal reveal-zoom-in">
+          <ul class="doc-list">
+            <li class="doc-item"><span class="check-box-icon">✓</span> Identity Proof: Aadhaar Card & PAN Card Copy</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Address Proof: Driving License / Voter ID / Utility Bill</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Income Proof: Last 3 Months Salary Slips / 2 Years ITR</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Bank Statement: Last 6 Months Bank Statement</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Vehicle Quotation: Official Dealer Proforma Invoice</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="section-padding bg-gradient-soft" id="calculator">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Vehicle Calculator</span>
+          <h2 class="section-title">Calculate Vehicle Loan EMI</h2>
+        </div>
+
+        <div class="emi-grid">
+          <div class="emi-card-inputs reveal reveal-fade-left">
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Vehicle Loan Amount</span>
+                <span class="calc-val-box" id="emiAmountVal">₹10,00,000</span>
+              </div>
+              <input type="range" class="range-slider" id="emiAmountSlider" min="100000" max="5000000" step="50000" value="1000000">
+            </div>
+
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Interest Rate (p.a.)</span>
+                <span class="calc-val-box" id="emiRateVal">8.75 %</span>
+              </div>
+              <input type="range" class="range-slider" id="emiRateSlider" min="8" max="14" step="0.1" value="8.75">
+            </div>
+
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Tenure (Years)</span>
+                <span class="calc-val-box" id="emiTenureVal">5 Years</span>
+              </div>
+              <input type="range" class="range-slider" id="emiTenureSlider" min="1" max="7" step="1" value="5">
+            </div>
+          </div>
+
+          <div class="emi-card-results reveal reveal-fade-right">
+            <div class="result-box-main">
+              <div class="monthly-emi-title">Estimated Monthly EMI</div>
+              <div class="monthly-emi-val" id="resMonthlyEmi">₹20,637</div>
+            </div>
+
+            <div class="chart-container">
+              <svg width="120" height="120" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="transparent" stroke="rgba(255,255,255,0.2)" stroke-width="12" />
+                <circle id="emiChartCircle" cx="50" cy="50" r="40" fill="transparent" stroke="#A5D6A7" stroke-width="12" stroke-dasharray="160 251" transform="rotate(-90 50 50)" />
+              </svg>
+            </div>
+
+            <div class="breakdown-list">
+              <div class="breakdown-item">
+                <span>Principal Amount:</span>
+                <strong id="resPrincipal">₹10,00,000</strong>
+              </div>
+              <div class="breakdown-item">
+                <span>Total Interest Payable:</span>
+                <strong id="resInterest">₹2,38,220</strong>
+              </div>
+              <div class="breakdown-item">
+                <span>Total Amount Payable:</span>
+                <strong id="resTotal">₹12,38,220</strong>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="openApplyModal('Vehicle Loan Page')" style="width: 100%; background: #FFFFFF; color: var(--primary-dark);">Apply For Vehicle Loan</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Greenvill Associates V2. Auto Finance Division Trichy.</div>
+        <div><a href="../index.html" style="color: var(--accent);">← Back to Main Home Page</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Floating Action Bar -->
+  <div class="floating-action-bar">
+    <a href="tel:+919876543210" class="btn btn-secondary btn-sm">Call Auto Advisor</a>
+    <a href="https://wa.me/919876543210" target="_blank" class="btn btn-accent btn-sm">WhatsApp</a>
+    <button class="btn btn-primary btn-sm" onclick="openApplyModal('Vehicle Loan Floating')">Apply Vehicle Loan</button>
+  </div>
+
+  <!-- Apply Modal -->
+  <div class="modal-overlay" id="applyModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalCloseBtn">&times;</button>
+      <h3 style="font-size: 1.6rem; margin-bottom: 6px; color: var(--primary-dark);">Vehicle Loan Application</h3>
+      <form id="quickApplyForm">
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input type="text" class="form-input" placeholder="Name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number *</label>
+          <input type="tel" class="form-input" placeholder="Mobile Number" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Loan Amount Required *</label>
+          <input type="text" class="form-input" value="₹10,00,000" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

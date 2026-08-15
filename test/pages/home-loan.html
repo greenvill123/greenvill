@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Greenvill Associates - Low Interest Home Loans in Trichy. Compare offers from 100+ partner banks starting at 8.35% p.a. Flexible 30-year tenure and PMAY subsidies.">
+  <title>Home Loan Advisory in Trichy | Greenvill Associates V2</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <!-- Ambient 2D Orbs -->
+  <div class="bg-vector-shape vector-shape-1"></div>
+  <div class="bg-vector-shape vector-shape-2"></div>
+
+  <!-- Header & Navigation -->
+  <header class="header scrolled" id="header">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo-wrapper">
+        <div class="logo-badge">G</div>
+        <div class="logo-text">
+          <span class="logo-title">GREENVILL</span>
+          <span class="logo-subtitle">ASSOCIATES V2</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="../index.html#home" class="nav-link">Home</a></li>
+          <li><a href="../index.html#loans" class="nav-link active">All Loans</a></li>
+          <li><a href="#eligibility" class="nav-link">Eligibility</a></li>
+          <li><a href="#calculator" class="nav-link">EMI Calculator</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="btn btn-primary" onclick="openApplyModal('Home Loan Page')">Apply For Home Loan</button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: 100px;">
+    <!-- Dedicated Hero Section -->
+    <section class="section-padding bg-gradient-soft" style="padding-top: 60px;">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content reveal reveal-fade-left">
+            <span class="section-tag">Home Loan Advisory</span>
+            <h1 class="hero-headline" style="font-size: 3rem;">
+              Own Your Dream Home With <span>Lowest Interest Rates</span>
+            </h1>
+            <p class="hero-subhead">
+              We partner directly with SBI, HDFC, ICICI, Axis, and 95+ top banks in Trichy to offer Home Loans starting at <strong>8.35% p.a.</strong> with maximum LTV up to 90% and tenure up to 30 years.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; background: rgba(255,255,255,0.9); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Interest Rate</div>
+                <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--primary-dark);">8.35% p.a.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Max Tenure</div>
+                <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--primary-dark);">30 Years</div>
+              </div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Max Loan Funding</div>
+                <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--primary-dark);">90% LTV</div>
+              </div>
+            </div>
+
+            <div class="hero-cta">
+              <button class="btn btn-primary btn-lg" onclick="openApplyModal('Home Loan Hero')">Apply For Home Loan</button>
+              <a href="#calculator" class="btn btn-secondary btn-lg">Calculate Home EMI</a>
+            </div>
+          </div>
+
+          <div class="hero-media-wrapper reveal reveal-fade-right">
+            <div class="hero-image-card">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80" alt="Happy family receiving house keys after home loan sanction">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features & Benefits -->
+    <section class="section-padding bg-subtle-light">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Key Benefits</span>
+          <h2 class="section-title">Why Get Your Home Loan Through Greenvill?</h2>
+          <p class="section-subtitle">Comprehensive home financing solutions tailored for new house purchase, plot construction, balance transfer, and renovation.</p>
+        </div>
+
+        <div class="stories-grid">
+          <div class="story-card reveal reveal-fade-up stagger-1">
+            <h3 style="color: var(--primary-dark); margin-bottom: 12px;">Lowest Interest Rates</h3>
+            <p style="color: var(--text-muted);">Repo Rate Linked Lending Rates (RLLR) starting at 8.35% p.a. negotiated with senior credit managers.</p>
+          </div>
+          <div class="story-card reveal reveal-fade-up stagger-2">
+            <h3 style="color: var(--primary-dark); margin-bottom: 12px;">Pradhan Mantri Awas Yojana (PMAY)</h3>
+            <p style="color: var(--text-muted);">Assistance in claiming government interest subsidy up to ₹2.67 Lakhs under PMAY CLSS schemes.</p>
+          </div>
+          <div class="story-card reveal reveal-fade-up stagger-3">
+            <h3 style="color: var(--primary-dark); margin-bottom: 12px;">Home Loan Balance Transfer</h3>
+            <p style="color: var(--text-muted);">Switch your existing expensive home loan to a lower interest rate partner bank with zero hassle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eligibility Criteria Section -->
+    <section class="section-padding bg-gradient-soft" id="eligibility">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Eligibility Criteria</span>
+          <h2 class="section-title">Home Loan Eligibility Guidelines</h2>
+          <p class="section-subtitle">Requirements for Salaried Individuals and Self-Employed Business Owners.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="pillar-card reveal reveal-fade-left">
+            <h3 style="color: var(--primary-dark); margin-bottom: 16px;">Salaried Individuals</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.95rem;">
+              <li><strong>Age:</strong> 21 to 65 Years at loan maturity</li>
+              <li><strong>Min Net Monthly Salary:</strong> ₹25,000 / month</li>
+              <li><strong>Work Experience:</strong> Min 2 Years total experience</li>
+              <li><strong>CIBIL Score:</strong> 700+ for best interest rate tiers</li>
+            </ul>
+          </div>
+
+          <div class="pillar-card reveal reveal-fade-right">
+            <h3 style="color: var(--primary-dark); margin-bottom: 16px;">Self-Employed Business Owners</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.95rem;">
+              <li><strong>Age:</strong> 23 to 70 Years at loan maturity</li>
+              <li><strong>Business Continuity:</strong> Min 3 Years registered operations</li>
+              <li><strong>Min Annual Income (ITR):</strong> ₹3.5 Lakhs net annual income</li>
+              <li><strong>CIBIL Score:</strong> 700+ preferred (Banking surrogate available)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Required Documents Checklist Section -->
+    <section class="section-padding bg-subtle-light" id="documents">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Documentation</span>
+          <h2 class="section-title">Required Documents For Home Loan</h2>
+          <p class="section-subtitle">Keep these documents ready for doorstep collection by our Trichy executive team.</p>
+        </div>
+
+        <div class="doc-content-box reveal reveal-zoom-in">
+          <ul class="doc-list">
+            <li class="doc-item"><span class="check-box-icon">✓</span> KYC Proof: Aadhaar Card, PAN Card, Voter ID / Passport</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Income Proof (Salaried): Last 3 Months Salary Slips & Form 16</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Income Proof (Business): Last 3 Years Audited ITR & Profit & Loss Statements</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Banking Proof: Last 6 Months Main Operating Bank Account Statement</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Property Documents: Sale Deed, Parent Title Deeds, Approved Plan Layout</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Verification: Encumbrance Certificate (EC) for 30 Years & Property Tax Receipt</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMI Calculator for Home Loan -->
+    <section class="section-padding bg-gradient-soft" id="calculator">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Home Loan Calculator</span>
+          <h2 class="section-title">Calculate Your Home Loan EMI</h2>
+        </div>
+
+        <div class="emi-grid">
+          <div class="emi-card-inputs reveal reveal-fade-left">
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Home Loan Amount</span>
+                <span class="calc-val-box" id="emiAmountVal">₹40,00,000</span>
+              </div>
+              <input type="range" class="range-slider" id="emiAmountSlider" min="500000" max="20000000" step="100000" value="4000000">
+            </div>
+
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Interest Rate (p.a.)</span>
+                <span class="calc-val-box" id="emiRateVal">8.35 %</span>
+              </div>
+              <input type="range" class="range-slider" id="emiRateSlider" min="8" max="15" step="0.05" value="8.35">
+            </div>
+
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Loan Tenure (Years)</span>
+                <span class="calc-val-box" id="emiTenureVal">25 Years</span>
+              </div>
+              <input type="range" class="range-slider" id="emiTenureSlider" min="5" max="30" step="1" value="25">
+            </div>
+          </div>
+
+          <div class="emi-card-results reveal reveal-fade-right">
+            <div class="result-box-main">
+              <div class="monthly-emi-title">Estimated Monthly EMI</div>
+              <div class="monthly-emi-val" id="resMonthlyEmi">₹31,768</div>
+            </div>
+
+            <div class="chart-container">
+              <svg width="120" height="120" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="transparent" stroke="rgba(255,255,255,0.2)" stroke-width="12" />
+                <circle id="emiChartCircle" cx="50" cy="50" r="40" fill="transparent" stroke="#A5D6A7" stroke-width="12" stroke-dasharray="160 251" transform="rotate(-90 50 50)" />
+              </svg>
+            </div>
+
+            <div class="breakdown-list">
+              <div class="breakdown-item">
+                <span>Principal Amount:</span>
+                <strong id="resPrincipal">₹40,00,000</strong>
+              </div>
+              <div class="breakdown-item">
+                <span>Total Interest Payable:</span>
+                <strong id="resInterest">₹55,30,400</strong>
+              </div>
+              <div class="breakdown-item">
+                <span>Total Amount Payable:</span>
+                <strong id="resTotal">₹95,30,400</strong>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="openApplyModal('Home Loan Page')" style="width: 100%; background: #FFFFFF; color: var(--primary-dark);">Apply For Home Loan</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Application Section -->
+    <section class="section-padding bg-subtle-light" id="contact">
+      <div class="container">
+        <div class="contact-grid reveal reveal-fade-up">
+          <div class="contact-info-panel">
+            <div>
+              <h3>Apply For Home Loan</h3>
+              <p style="opacity: 0.9;">Our Trichy Home Loan specialists will guide you through bank rate comparisons and doorstep document collection.</p>
+              <div style="margin-top: 24px; font-size: 0.95rem;">
+                <strong>📍 Trichy Office:</strong> Thillai Nagar Main Road, Trichy - 620018<br>
+                <strong>📞 Phone:</strong> +91 98765 43210
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-panel">
+            <h3 style="font-size: 1.6rem; margin-bottom: 12px;">Instant Home Loan Callback</h3>
+            <form id="contactMainForm">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" class="form-input" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-input" placeholder="Mobile Number" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Required Home Loan Amount *</label>
+                <input type="text" class="form-input" placeholder="e.g. ₹40,00,000" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Submit Home Loan Request</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Greenvill Associates V2. Home Loan Advisory Division Trichy.</div>
+        <div><a href="../index.html" style="color: var(--accent);">← Back to Main Home Page</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Floating Action Bar -->
+  <div class="floating-action-bar">
+    <a href="tel:+919876543210" class="btn btn-secondary btn-sm">Call Advisor</a>
+    <a href="https://wa.me/919876543210" target="_blank" class="btn btn-accent btn-sm">WhatsApp</a>
+    <button class="btn btn-primary btn-sm" onclick="openApplyModal('Home Loan Floating')">Apply Home Loan</button>
+  </div>
+
+  <!-- Apply Modal -->
+  <div class="modal-overlay" id="applyModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalCloseBtn">&times;</button>
+      <h3 style="font-size: 1.6rem; margin-bottom: 6px; color: var(--primary-dark);">Home Loan Application</h3>
+      <form id="quickApplyForm">
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input type="text" class="form-input" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number *</label>
+          <input type="tel" class="form-input" placeholder="Mobile Number" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Loan Amount Required *</label>
+          <input type="text" class="form-input" value="₹40,00,000" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Submit Home Loan Application</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

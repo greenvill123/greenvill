@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Instant Unsecured Personal Loans in Trichy by Greenvill Associates. Rates starting at 10.50% p.a. Zero collateral, minimal documentation, and 24-hour disbursal.">
+  <title>Personal Loan Advisory in Trichy | Greenvill Associates V2</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <!-- Ambient 2D Orbs -->
+  <div class="bg-vector-shape vector-shape-1"></div>
+  <div class="bg-vector-shape vector-shape-2"></div>
+
+  <!-- Header & Navigation -->
+  <header class="header scrolled" id="header">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo-wrapper">
+        <div class="logo-badge">G</div>
+        <div class="logo-text">
+          <span class="logo-title">GREENVILL</span>
+          <span class="logo-subtitle">ASSOCIATES V2</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="../index.html#home" class="nav-link">Home</a></li>
+          <li><a href="../index.html#loans" class="nav-link active">All Loans</a></li>
+          <li><a href="#eligibility" class="nav-link">Eligibility</a></li>
+          <li><a href="#calculator" class="nav-link">EMI Calculator</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="btn btn-primary" onclick="openApplyModal('Personal Loan Page')">Apply For Personal Loan</button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: 100px;">
+    <!-- Dedicated Hero Section -->
+    <section class="section-padding bg-gradient-soft" style="padding-top: 60px;">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content reveal reveal-fade-left">
+            <span class="section-tag">Instant Unsecured Funding</span>
+            <h1 class="hero-headline" style="font-size: 3rem;">
+              Quick Personal Loans With <span>Zero Collateral</span>
+            </h1>
+            <p class="hero-subhead">
+              Get instant personal loans up to ₹40 Lakhs for medical emergencies, weddings, education, or travel. Enjoy rates starting at <strong>10.50% p.a.</strong> with 24-hour disbursal into your bank account.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; background: rgba(255,255,255,0.9); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Interest Rate</div>
+                <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--primary-dark);">10.50% p.a.</div>
+              </div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Sanction Time</div>
+                <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--primary-dark);">24 Hours</div>
+              </div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Max Loan Limit</div>
+                <div style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--primary-dark);">₹40 Lakhs</div>
+              </div>
+            </div>
+
+            <div class="hero-cta">
+              <button class="btn btn-primary btn-lg" onclick="openApplyModal('Personal Loan Hero')">Apply For Personal Loan</button>
+              <a href="#calculator" class="btn btn-secondary btn-lg">Calculate EMI</a>
+            </div>
+          </div>
+
+          <div class="hero-media-wrapper reveal reveal-fade-right">
+            <div class="hero-image-card">
+              <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80" alt="Professional reviewing personal loan documentation">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features & Benefits -->
+    <section class="section-padding bg-subtle-light">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Key Features</span>
+          <h2 class="section-title">Personal Loan Features & Flexibility</h2>
+          <p class="section-subtitle">No security, no guarantors, and no restriction on end-use.</p>
+        </div>
+
+        <div class="stories-grid">
+          <div class="story-card reveal reveal-fade-up stagger-1">
+            <h3 style="color: var(--primary-dark); margin-bottom: 12px;">100% Unsecured Loan</h3>
+            <p style="color: var(--text-muted);">No collateral, gold, or property pledge required. Approval is based strictly on your monthly income and credit score.</p>
+          </div>
+          <div class="story-card reveal reveal-fade-up stagger-2">
+            <h3 style="color: var(--primary-dark); margin-bottom: 12px;">Doorstep Verification</h3>
+            <p style="color: var(--text-muted);">Our Trichy team collects documents directly from your workplace or residence for instant digital verification.</p>
+          </div>
+          <div class="story-card reveal reveal-fade-up stagger-3">
+            <h3 style="color: var(--primary-dark); margin-bottom: 12px;">Flexible Repayment Tenure</h3>
+            <p style="color: var(--text-muted);">Choose comfortable repayment options from 12 months up to 60 months with zero foreclosure penalty after 12 EMIs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eligibility Criteria -->
+    <section class="section-padding bg-gradient-soft" id="eligibility">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Eligibility Criteria</span>
+          <h2 class="section-title">Personal Loan Eligibility Guidelines</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="pillar-card reveal reveal-fade-left">
+            <h3 style="color: var(--primary-dark); margin-bottom: 16px;">Salaried Applicants</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.95rem;">
+              <li><strong>Age:</strong> 21 to 60 Years</li>
+              <li><strong>Min Net Monthly Income:</strong> ₹20,000 / month</li>
+              <li><strong>Employment Status:</strong> Min 1 Year in current organization or 2 Yrs total experience</li>
+              <li><strong>CIBIL Score:</strong> 720+ preferred for fast sanction</li>
+            </ul>
+          </div>
+
+          <div class="pillar-card reveal reveal-fade-right">
+            <h3 style="color: var(--primary-dark); margin-bottom: 16px;">Self-Employed Professionals</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.95rem;">
+              <li><strong>Age:</strong> 23 to 65 Years</li>
+              <li><strong>Min Gross Annual Turnover:</strong> ₹15 Lakhs</li>
+              <li><strong>Business Continuity:</strong> Min 2 Years registered business</li>
+              <li><strong>CIBIL Score:</strong> 700+</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Required Documents Checklist -->
+    <section class="section-padding bg-subtle-light" id="documents">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Documentation</span>
+          <h2 class="section-title">Required Documents For Personal Loan</h2>
+        </div>
+
+        <div class="doc-content-box reveal reveal-zoom-in">
+          <ul class="doc-list">
+            <li class="doc-item"><span class="check-box-icon">✓</span> Identity Proof: Aadhaar Card / PAN Card / Passport</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Address Proof: Voter ID / Driving License / Utility Bill</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Salary Slips: Last 3 Months Official Pay Slips</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Bank Statement: Last 6 Months Main Salary Account Statement</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Employment Proof: Official Office ID Card / Appointment Letter</li>
+            <li class="doc-item"><span class="check-box-icon">✓</span> Passport Size Photographs: 2 Recent Color Photos</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMI Calculator for Personal Loan -->
+    <section class="section-padding bg-gradient-soft" id="calculator">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Personal Loan Calculator</span>
+          <h2 class="section-title">Calculate Your Monthly EMI</h2>
+        </div>
+
+        <div class="emi-grid">
+          <div class="emi-card-inputs reveal reveal-fade-left">
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Personal Loan Amount</span>
+                <span class="calc-val-box" id="emiAmountVal">₹5,00,000</span>
+              </div>
+              <input type="range" class="range-slider" id="emiAmountSlider" min="50000" max="4000000" step="25000" value="500000">
+            </div>
+
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Interest Rate (p.a.)</span>
+                <span class="calc-val-box" id="emiRateVal">10.5 %</span>
+              </div>
+              <input type="range" class="range-slider" id="emiRateSlider" min="10" max="18" step="0.25" value="10.5">
+            </div>
+
+            <div class="calc-group">
+              <div class="calc-label-row">
+                <span class="calc-label">Tenure (Years)</span>
+                <span class="calc-val-box" id="emiTenureVal">3 Years</span>
+              </div>
+              <input type="range" class="range-slider" id="emiTenureSlider" min="1" max="5" step="1" value="3">
+            </div>
+          </div>
+
+          <div class="emi-card-results reveal reveal-fade-right">
+            <div class="result-box-main">
+              <div class="monthly-emi-title">Estimated Monthly EMI</div>
+              <div class="monthly-emi-val" id="resMonthlyEmi">₹16,252</div>
+            </div>
+
+            <div class="chart-container">
+              <svg width="120" height="120" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="transparent" stroke="rgba(255,255,255,0.2)" stroke-width="12" />
+                <circle id="emiChartCircle" cx="50" cy="50" r="40" fill="transparent" stroke="#A5D6A7" stroke-width="12" stroke-dasharray="160 251" transform="rotate(-90 50 50)" />
+              </svg>
+            </div>
+
+            <div class="breakdown-list">
+              <div class="breakdown-item">
+                <span>Principal Amount:</span>
+                <strong id="resPrincipal">₹5,00,000</strong>
+              </div>
+              <div class="breakdown-item">
+                <span>Total Interest Payable:</span>
+                <strong id="resInterest">₹85,072</strong>
+              </div>
+              <div class="breakdown-item">
+                <span>Total Amount Payable:</span>
+                <strong id="resTotal">₹5,85,072</strong>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="openApplyModal('Personal Loan Page')" style="width: 100%; background: #FFFFFF; color: var(--primary-dark);">Apply For Personal Loan</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding bg-subtle-light" id="contact">
+      <div class="container">
+        <div class="contact-grid reveal reveal-fade-up">
+          <div class="contact-info-panel">
+            <div>
+              <h3>Instant Personal Loan</h3>
+              <p style="opacity: 0.9;">Apply now for instant 24-hour approval and rate comparisons across top lenders in Trichy.</p>
+              <div style="margin-top: 24px; font-size: 0.95rem;">
+                <strong>📍 Trichy Office:</strong> Thillai Nagar Main Road, Trichy - 620018<br>
+                <strong>📞 Helpline:</strong> +91 98765 43210
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-panel">
+            <h3 style="font-size: 1.6rem; margin-bottom: 12px;">Request Personal Loan Callback</h3>
+            <form id="contactMainForm">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" class="form-input" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-input" placeholder="Mobile Number" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Required Loan Amount *</label>
+                <input type="text" class="form-input" placeholder="e.g. ₹5,00,000" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Submit Request</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Greenvill Associates V2. Personal Loan Division Trichy.</div>
+        <div><a href="../index.html" style="color: var(--accent);">← Back to Main Home Page</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Floating Action Bar -->
+  <div class="floating-action-bar">
+    <a href="tel:+919876543210" class="btn btn-secondary btn-sm">Call Advisor</a>
+    <a href="https://wa.me/919876543210" target="_blank" class="btn btn-accent btn-sm">WhatsApp</a>
+    <button class="btn btn-primary btn-sm" onclick="openApplyModal('Personal Loan Floating')">Apply Personal Loan</button>
+  </div>
+
+  <!-- Apply Modal -->
+  <div class="modal-overlay" id="applyModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalCloseBtn">&times;</button>
+      <h3 style="font-size: 1.6rem; margin-bottom: 6px; color: var(--primary-dark);">Personal Loan Application</h3>
+      <form id="quickApplyForm">
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input type="text" class="form-input" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number *</label>
+          <input type="tel" class="form-input" placeholder="Mobile Number" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Loan Amount Required *</label>
+          <input type="text" class="form-input" value="₹5,00,000" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

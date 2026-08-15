@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Greenvill Associates - Trichy's Premier Loan Advisory & Financial Consultants. Partnered with 100+ leading banks for Home Loans, Business Loans, Personal Loans & Mortgage Loans with fast approval.">
+  <meta name="keywords" content="Loan Consultant Trichy, Home Loan Trichy, Business Loan Advisory, Mortgage Loan Consultants, Greenvill Associates, Banking Partner Trichy">
+  <title>Greenvill Associates | Premium Loan Advisory & Financial Consultants in Trichy</title>
+
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Background Ambient 2D Vector Orbs -->
+  <div class="bg-vector-shape vector-shape-1"></div>
+  <div class="bg-vector-shape vector-shape-2"></div>
+
+  <!-- Sticky Glassmorphic Header & Navigation -->
+  <header class="header" id="header">
+    <div class="container nav-container">
+      <a href="#home" class="logo-wrapper">
+        <div class="logo-badge">G</div>
+        <div class="logo-text">
+          <span class="logo-title">GREENVILL</span>
+          <span class="logo-subtitle">ASSOCIATES</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#loans" class="nav-link">Loans</a></li>
+          <li><a href="#calculator" class="nav-link">Calculators</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="btn btn-primary" onclick="openApplyModal('General Loan')">Apply Now</button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section with 2D Micro Animation -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content reveal reveal-fade-left">
+            <div class="hero-badge">
+              <span class="badge-dot"></span>
+              Trichy's #1 Trusted Financial Consultants
+            </div>
+            <h1 class="hero-headline">
+              Helping You Secure<br>
+              <span>The Right Loan,</span><br>
+              With Confidence.
+            </h1>
+            <p class="hero-subhead">
+              Trusted Loan Consultants in Trichy. Partnered with India's Leading Banks & Financial Institutions to deliver swift approvals, minimum documentation, and lowest interest rates.
+            </p>
+
+            <div class="hero-cta">
+              <button class="btn btn-primary btn-lg" onclick="openApplyModal('Hero CTA')">Apply Now</button>
+              <a href="#calculator" class="btn btn-secondary btn-lg">Calculate EMI</a>
+            </div>
+
+            <div class="hero-trust-bar">
+              <div class="trust-item">
+                <span class="trust-indicator">✓</span>
+                100% Transparent Process
+              </div>
+              <div class="trust-item">
+                <span class="trust-indicator">✓</span>
+                Zero Hidden Charges
+              </div>
+              <div class="trust-item">
+                <span class="trust-indicator">✓</span>
+                Dedicated Manager
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-media-wrapper reveal reveal-fade-right">
+            <div class="hero-image-card">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80" alt="Financial advisor discussing loan approval with happy family">
+            </div>
+
+            <!-- Floating Statistics Cards with Animated 2D Floating Motion -->
+            <div class="floating-stat stat-1">
+              <div>
+                <div class="stat-number" data-target="10" data-suffix="+">10+</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+            </div>
+
+            <div class="floating-stat stat-2">
+              <div>
+                <div class="stat-number" data-target="100" data-suffix="+">100+</div>
+                <div class="stat-label">Bank Partners</div>
+              </div>
+            </div>
+
+            <div class="floating-stat stat-3">
+              <div>
+                <div class="stat-number" data-target="5000" data-suffix="+">5,000+</div>
+                <div class="stat-label">Customers Assisted</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Summary Bar -->
+    <section style="background-color: var(--primary-dark); color: #FFFFFF; padding: 36px 0; position: relative; z-index: 5;">
+      <div class="container reveal reveal-fade-up" style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; text-align: center;">
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--accent);">₹250 Cr+</div>
+          <div style="font-size: 0.9rem; opacity: 0.9;">Loans Facilitated</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--accent);">99.2%</div>
+          <div style="font-size: 0.9rem; opacity: 0.9;">Approval Ratio</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--accent);">48 Hours</div>
+          <div style="font-size: 0.9rem; opacity: 0.9;">Average Sanction Time</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--accent);">Zero</div>
+          <div style="font-size: 0.9rem; opacity: 0.9;">Upfront Advisory Fees</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Greenvill Section & Timeline -->
+    <section class="section-padding bg-subtle-light" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image-wrapper reveal reveal-fade-left">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80" alt="Greenvill Corporate Headquarters Office in Trichy" class="about-img-main">
+            <div class="about-experience-badge">
+              <div class="exp-years">3+</div>
+              <div class="exp-text">Years of Excellence in Financial Advisory</div>
+            </div>
+          </div>
+
+          <div class="about-content reveal reveal-fade-right">
+            <span class="section-tag">Who We Are</span>
+            <h3>Empowering Financial Growth in Trichy & Beyond</h3>
+            <p class="about-text">
+              Founded with a vision to streamline complex banking procedures, Greenvill Associates stands as Trichy's premier Direct Selling Agent (DSA) and loan consultancy. We serve as a trusted bridge between customers and India’s premier public, private, and NBFC banking institutions.
+            </p>
+
+            <div class="about-pillars">
+              <div class="pillar-card reveal reveal-zoom-in stagger-1">
+                <div class="pillar-title">Our Mission</div>
+                <div class="pillar-desc">To make loan acquisition effortless, transparent, and personalized for every family and business owner.</div>
+              </div>
+              <div class="pillar-card reveal reveal-zoom-in stagger-2">
+                <div class="pillar-title">Our Vision</div>
+                <div class="pillar-desc">To be South India's most dependable and technologically empowered loan consulting platform.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Corporate Growth Timeline -->
+        <div class="timeline-section reveal reveal-fade-up">
+          <div class="timeline-title">Our Growth Journey (2015 – 2026)</div>
+          <div class="timeline-grid">
+            <div class="timeline-item reveal reveal-fade-up stagger-1">
+              <div class="timeline-year">2015</div>
+              <div class="timeline-desc">Established as a dedicated financial advisory desk in Trichy with 5 core banking tie-ups.</div>
+            </div>
+            <div class="timeline-item reveal reveal-fade-up stagger-2">
+              <div class="timeline-year">2020</div>
+              <div class="timeline-desc">Expanded partnerships to 50+ leading Nationalized Banks and top-tier NBFCs.</div>
+            </div>
+            <div class="timeline-item reveal reveal-fade-up stagger-3">
+              <div class="timeline-year">2023</div>
+              <div class="timeline-desc">Digital Transformation phase: Fast-track digital verification and ₹100 Cr loan milestone.</div>
+            </div>
+            <div class="timeline-item reveal reveal-fade-up stagger-4">
+              <div class="timeline-year">2026</div>
+              <div class="timeline-desc">Launched Greenvill V2 platform facilitating over ₹250 Cr+ across 100+ partner institutions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loan Categories Section -->
+    <section class="section-padding bg-gradient-soft" id="loans">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Loan Offerings</span>
+          <h2 class="section-title">Tailored Financial Solutions For Every Milestone</h2>
+          <p class="section-subtitle">Explore our specialized loan categories designed with low interest rates, flexible tenure options, and quick disbursement.</p>
+        </div>
+
+        <div class="loans-grid">
+          <!-- 1. Home Loan -->
+          <div class="loan-card reveal reveal-fade-up stagger-1">
+            <div class="loan-card-image">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80" alt="Family receiving keys to their new home">
+              <span class="loan-badge">Most Popular</span>
+            </div>
+            <div class="loan-card-body">
+              <h3 class="loan-card-title">Home Loan</h3>
+              <p class="loan-card-desc">Fulfill your dream of owning a home with low interest rates, long tenure up to 30 years, and hassle-free balance transfers.</p>
+              <div class="loan-card-features">
+                <span class="feature-tag">Up to 90% LTV</span>
+                <span class="feature-tag">Tenure up to 30 Yrs</span>
+                <span class="feature-tag">PMAY Subsidy</span>
+              </div>
+              <div class="loan-card-footer">
+                <div class="loan-rate">Starts at <strong>8.35% p.a.</strong></div>
+                <a href="pages/home-loan.html" class="btn btn-secondary btn-sm">Explore Home Loan</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Personal Loan -->
+          <div class="loan-card reveal reveal-fade-up stagger-2">
+            <div class="loan-card-image">
+              <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Professional reviewing personal financial documentation">
+              <span class="loan-badge">Instant Sanction</span>
+            </div>
+            <div class="loan-card-body">
+              <h3 class="loan-card-title">Personal Loan</h3>
+              <p class="loan-card-desc">Instant unsecured personal loans for medical emergencies, weddings, travel, or debt consolidation without collateral.</p>
+              <div class="loan-card-features">
+                <span class="feature-tag">No Collateral</span>
+                <span class="feature-tag">Minimal Docs</span>
+                <span class="feature-tag">24 Hr Payout</span>
+              </div>
+              <div class="loan-card-footer">
+                <div class="loan-rate">Starts at <strong>10.50% p.a.</strong></div>
+                <a href="pages/personal-loan.html" class="btn btn-secondary btn-sm">Explore Personal Loan</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Business Loan -->
+          <div class="loan-card reveal reveal-fade-up stagger-3">
+            <div class="loan-card-image">
+              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="Business owner holding meeting in modern commercial office">
+              <span class="loan-badge">High Capital</span>
+            </div>
+            <div class="loan-card-body">
+              <h3 class="loan-card-title">Business Loan</h3>
+              <p class="loan-card-desc">Fuel your business expansion, working capital, equipment purchase, or commercial infrastructure with high-ticket funding.</p>
+              <div class="loan-card-features">
+                <span class="feature-tag">Up to ₹5 Crore</span>
+                <span class="feature-tag">Flexi EMI</span>
+                <span class="feature-tag">Tax Benefits</span>
+              </div>
+              <div class="loan-card-footer">
+                <div class="loan-rate">Starts at <strong>11.25% p.a.</strong></div>
+                <a href="pages/business-loan.html" class="btn btn-secondary btn-sm">Explore Business Loan</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Mortgage Loan (LAP) -->
+          <div class="loan-card reveal reveal-fade-up stagger-1">
+            <div class="loan-card-image">
+              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Modern corporate bank building architecture">
+              <span class="loan-badge">Property Backed</span>
+            </div>
+            <div class="loan-card-body">
+              <h3 class="loan-card-title">Mortgage Loan (LAP)</h3>
+              <p class="loan-card-desc">Unlock the hidden equity in your residential or commercial property for high-value funding at low mortgage rates.</p>
+              <div class="loan-card-features">
+                <span class="feature-tag">Up to 75% LTV</span>
+                <span class="feature-tag">15 Yrs Tenure</span>
+                <span class="feature-tag">Low Interest</span>
+              </div>
+              <div class="loan-card-footer">
+                <div class="loan-rate">Starts at <strong>9.15% p.a.</strong></div>
+                <a href="pages/mortgage-loan.html" class="btn btn-secondary btn-sm">Explore Mortgage Loan</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Vehicle Loan -->
+          <div class="loan-card reveal reveal-fade-up stagger-2">
+            <div class="loan-card-image">
+              <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" alt="Customer receiving car keys after loan approval">
+              <span class="loan-badge">Fast Track</span>
+            </div>
+            <div class="loan-card-body">
+              <h3 class="loan-card-title">Vehicle Loan</h3>
+              <p class="loan-card-desc">Drive your dream personal car or commercial fleet with attractive financing up to 100% on-road price.</p>
+              <div class="loan-card-features">
+                <span class="feature-tag">100% Funding</span>
+                <span class="feature-tag">Quick Disbursal</span>
+                <span class="feature-tag">7 Yrs Tenure</span>
+              </div>
+              <div class="loan-card-footer">
+                <div class="loan-rate">Starts at <strong>8.75% p.a.</strong></div>
+                <a href="pages/vehicle-loan.html" class="btn btn-secondary btn-sm">Explore Vehicle Loan</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Education Loan -->
+          <div class="loan-card reveal reveal-fade-up stagger-3">
+            <div class="loan-card-image">
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Students in university campus celebrating graduation">
+              <span class="loan-badge">Global Study</span>
+            </div>
+            <div class="loan-card-body">
+              <h3 class="loan-card-title">Education Loan</h3>
+              <p class="loan-card-desc">Empower higher education in top Indian and overseas universities with moratorium period and tax relief under Sec 80E.</p>
+              <div class="loan-card-features">
+                <span class="feature-tag">100% Expenses</span>
+                <span class="feature-tag">Moratorium Period</span>
+                <span class="feature-tag">Tax Exemption</span>
+              </div>
+              <div class="loan-card-footer">
+                <div class="loan-rate">Starts at <strong>9.50% p.a.</strong></div>
+                <a href="pages/education-loan.html" class="btn btn-secondary btn-sm">Explore Education Loan</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Gold Loan -->
+          <div class="loan-card reveal reveal-fade-up stagger-1">
+            <div class="loan-card-image">
+              <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=800&q=80" alt="Gold ornament appraisal at bank desk">
+              <span class="loan-badge">Same Day Payout</span>
+            </div>
+            <div class="loan-card-body">
+              <h3 class="loan-card-title">Gold Loan</h3>
+              <p class="loan-card-desc">Pledge your gold ornaments securely for immediate liquidity with minimum interest rates and bullet repayment options.</p>
+              <div class="loan-card-features">
+                <span class="feature-tag">30 Min Approval</span>
+                <span class="feature-tag">Maximum Value</span>
+                <span class="feature-tag">Safe Bank Vaults</span>
+              </div>
+              <div class="loan-card-footer">
+                <div class="loan-rate">Starts at <strong>8.90% p.a.</strong></div>
+                <a href="pages/gold-loan.html" class="btn btn-secondary btn-sm">Explore Gold Loan</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Commercial & MSME Loan -->
+          <div class="loan-card reveal reveal-fade-up stagger-2">
+            <div class="loan-card-image">
+              <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Commercial factory and industrial machinery">
+              <span class="loan-badge">MSME Priority</span>
+            </div>
+            <div class="loan-card-body">
+              <h3 class="loan-card-title">MSME & Machinery</h3>
+              <p class="loan-card-desc">Accelerate industrial growth, equipment purchase, or commercial machinery upgrade with CGTMSE backed MSME loans.</p>
+              <div class="loan-card-features">
+                <span class="feature-tag">CGTMSE Coverage</span>
+                <span class="feature-tag">Flexi Working Capital</span>
+                <span class="feature-tag">Subsidized Rates</span>
+              </div>
+              <div class="loan-card-footer">
+                <div class="loan-rate">Starts at <strong>10.25% p.a.</strong></div>
+                <a href="pages/business-loan.html" class="btn btn-secondary btn-sm">Explore MSME Loan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Balance Transfer Savings Calculator -->
+    <section class="section-padding bg-subtle-light" id="savings">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Balance Transfer Savings</span>
+          <h2 class="section-title">Calculate How Much Money You Save</h2>
+          <p class="section-subtitle">Switch your existing home or business loan to Greenvill's partner banks for instant interest reduction.</p>
+        </div>
+
+        <div class="savings-card reveal reveal-zoom-in">
+          <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;">
+            <div>
+              <div class="form-group">
+                <label class="form-label">Current Outstanding Loan Balance</label>
+                <input type="number" id="btAmountInput" class="form-input" value="3500000">
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label">Current Bank Interest Rate (% p.a.)</label>
+                  <input type="number" id="btCurrRateInput" class="form-input" value="11.5" step="0.1">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Greenvill Partner Rate (% p.a.)</label>
+                  <input type="number" id="btNewRateInput" class="form-input" value="8.35" step="0.1">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Remaining Loan Tenure (Years)</label>
+                <input type="number" id="btTenureInput" class="form-input" value="20">
+              </div>
+            </div>
+
+            <div style="background: var(--primary-dark); color: #FFFFFF; padding: 32px; border-radius: var(--radius-md); text-align: center;">
+              <div style="font-size: 0.9rem; text-transform: uppercase; color: var(--accent); letter-spacing: 1px; font-weight: 700;">Total Interest Money Saved</div>
+              <div style="font-family: var(--font-heading); font-size: 3rem; font-weight: 800; color: #FFFFFF; margin: 12px 0;" id="resBtSavings">₹16,42,800</div>
+              <div style="font-size: 0.95rem; color: var(--accent-soft); margin-bottom: 20px;">Monthly EMI Reduction: <strong id="resBtMonthlyDiff">₹6,845 / mo</strong></div>
+              <button class="btn btn-primary" onclick="openApplyModal('Balance Transfer Request')" style="background: #FFFFFF; color: var(--primary-dark); width: 100%;">Transfer Loan Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Financial Insights -->
+    <section class="section-padding bg-subtle-light" id="blog">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Financial Advisory</span>
+          <h2 class="section-title">Latest Financial Insights & Guides</h2>
+          <p class="section-subtitle">Stay informed with expert advice on interest trends, credit scores, and borrowing tips.</p>
+        </div>
+
+        <div class="insights-grid">
+          <!-- Card 1 -->
+          <a href="blog/repo-rate-impact-home-loan-emi.html" class="insight-card reveal reveal-fade-up stagger-1" style="text-decoration: none; color: inherit;">
+            <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=600&q=80" alt="Bank rate analysis chart" class="insight-img">
+            <div class="insight-body">
+              <span class="insight-tag">Interest Rates</span>
+              <h3 class="insight-title">RBIs Repo Rate Outlook & How It Affects Your Home Loan EMI</h3>
+              <p class="insight-snippet">Understand repo-rate linked lending rates (RLLR) and when to switch your home loan for lower monthly installments.</p>
+            </div>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="blog/improve-cibil-score-above-750.html" class="insight-card reveal reveal-fade-up stagger-2" style="text-decoration: none; color: inherit;">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Credit score report digital tablet" class="insight-img">
+            <div class="insight-body">
+              <span class="insight-tag">Credit Score</span>
+              <h3 class="insight-title">5 Actionable Steps to Improve Your CIBIL Score Above 750</h3>
+              <p class="insight-snippet">Maintain an excellent credit profile to unlock fast-track approvals and negotiated interest rates with premier banks.</p>
+            </div>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="blog/home-loan-tax-benefits-sec-24-80c.html" class="insight-card reveal reveal-fade-up stagger-3" style="text-decoration: none; color: inherit;">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Tax planning document" class="insight-img">
+            <div class="insight-body">
+              <span class="insight-tag">Tax Saving</span>
+              <h3 class="insight-title">Maximizing Tax Benefits Under Sec 24 & 80C For Home Buyers</h3>
+              <p class="insight-snippet">Save up to ₹3.5 Lakhs annually on principal and interest repayments through strategic tax planning.</p>
+            </div>
+          </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="blog/index.html" class="btn btn-primary">Browse All Blog Articles</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="section-padding bg-gradient-soft" id="faq">
+      <div class="container">
+        <div class="section-header reveal reveal-fade-up">
+          <span class="section-tag">Questions & Answers</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Search or click any question below to find instant answers regarding our services.</p>
+        </div>
+
+        <div class="faq-search-wrapper reveal reveal-fade-up">
+          <input type="text" id="faqSearchInput" class="faq-search-input" placeholder="Search FAQ (e.g. Home loan rate, CIBIL score, documents)...">
+        </div>
+
+        <div class="faq-accordion reveal reveal-fade-up">
+          <!-- FAQ 1 -->
+          <div class="faq-item open">
+            <div class="faq-header">
+              <span>Does Greenvill Associates charge any upfront service fee to customers?</span>
+              <span class="faq-toggle-icon">+</span>
+            </div>
+            <div class="faq-body">
+              No. Greenvill Associates provides 100% free loan consultation and documentation assistance to our clients. We are compensated directly by our authorized banking partners as official Direct Selling Agents (DSA).
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>How fast can my loan be approved through Greenvill?</span>
+              <span class="faq-toggle-icon">+</span>
+            </div>
+            <div class="faq-body">
+              With complete documentation, Personal Loans can be sanctioned within 24 hours, Business Loans in 48 hours, and Home/Mortgage Loans within 3 to 5 working days.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>What is the minimum CIBIL score needed for loan approval?</span>
+              <span class="faq-toggle-icon">+</span>
+            </div>
+            <div class="faq-body">
+              A CIBIL score of 700+ is preferred for lowest interest rates. However, if your CIBIL score is lower or you have no credit history, our experts match you with NBFC partners who accommodate low-credit profiles.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <div class="faq-header">
+              <span>Can self-employed individuals get a Home Loan without standard ITR?</span>
+              <span class="faq-toggle-icon">+</span>
+            </div>
+            <div class="faq-body">
+              Yes! We have specialized banking programs (Banking Surrogate & Turnover Programs) tailored specifically for self-employed business owners who do not possess traditional 3-year ITR files.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trichy Branch & Split Contact Form Section -->
+    <section class="section-padding bg-subtle-light" id="contact">
+      <div class="container">
+        <div class="contact-grid reveal reveal-fade-up">
+          <!-- Left Info Panel -->
+          <div class="contact-info-panel">
+            <div>
+              <h3>Visit Our Trichy Office</h3>
+              <p style="opacity: 0.9; font-size: 1.05rem;">Schedule a face-to-face consultation with our senior loan advisory team.</p>
+
+              <div class="contact-details-list">
+                <div class="contact-detail-item">
+                  <strong>📍 Office Address:</strong><br>
+                  Greenvill Associates V2 Building,<br>
+                  Thillai Nagar Main Road, Trichy - 620018,<br>
+                  Tamil Nadu, India.
+                </div>
+
+                <div class="contact-detail-item">
+                  <strong>📞 Direct Helpline:</strong><br>
+                  +91 98765 43210 / +91 0431 2700100
+                </div>
+
+                <div class="contact-detail-item">
+                  <strong>✉️ Email Support:</strong><br>
+                  contact@greenvillassociates.com
+                </div>
+
+                <div class="contact-detail-item">
+                  <strong>🕒 Working Hours:</strong><br>
+                  Mon - Sat: 9:30 AM – 7:00 PM (Sunday Closed)
+                </div>
+              </div>
+            </div>
+
+            <div style="font-size: 0.85rem; opacity: 0.8;">
+              Authorized Direct Selling Agent (DSA) | Reg. No: TRC-DSA-2015-8892 | <a href="admin.html" style="color: var(--accent); text-decoration: underline;">Admin Portal</a>
+            </div>
+          </div>
+
+          <!-- Right Form Panel -->
+          <div class="contact-form-panel">
+            <h3 style="font-size: 1.8rem; margin-bottom: 8px;">Request Instant Callback</h3>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">Fill in your details below and a advisor will connect with you within 15 minutes.</p>
+
+            <form id="contactMainForm">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" class="form-input" placeholder="e.g. Ramesh Chandran" required>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label">Phone Number *</label>
+                  <input type="tel" class="form-input" placeholder="10-digit mobile number" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">City / Location *</label>
+                  <input type="text" class="form-input" value="Trichy" required>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label">Required Loan Type *</label>
+                  <select class="form-select" required>
+                    <option value="">Select Category</option>
+                    <option value="Home Loan">Home Loan</option>
+                    <option value="Personal Loan">Personal Loan</option>
+                    <option value="Business Loan">Business Loan</option>
+                    <option value="Mortgage Loan">Mortgage Loan (LAP)</option>
+                    <option value="Vehicle Loan">Vehicle Loan</option>
+                    <option value="Education Loan">Education Loan</option>
+                    <option value="Gold Loan">Gold Loan</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Required Loan Amount *</label>
+                  <input type="text" class="form-input" placeholder="e.g. ₹25,00,000" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Message / Requirement (Optional)</label>
+                <textarea class="form-textarea" rows="3" placeholder="Tell us more about your timeline or current banker..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Submit Request Now</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Luxury Corporate Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1 -->
+        <div>
+          <div class="logo-wrapper" style="margin-bottom: 20px;">
+            <div class="logo-badge" style="background: var(--primary-light);">G</div>
+            <div class="logo-text">
+              <span class="logo-title" style="color: #FFFFFF;">GREENVILL</span>
+              <span class="logo-subtitle" style="color: var(--accent);">ASSOCIATES V2</span>
+            </div>
+          </div>
+          <p style="font-size: 0.95rem; color: #9EAF9F; margin-bottom: 20px;">
+            Trichy's leading luxury loan advisory & Direct Selling Agent platform. Partnered with 100+ premier nationalized banks & NBFCs to deliver transparent loan solutions.
+          </p>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <h4>Loan Pages</h4>
+          <ul class="footer-links">
+            <li><a href="pages/home-loan.html">Home Loans Page</a></li>
+            <li><a href="pages/personal-loan.html">Personal Loans Page</a></li>
+            <li><a href="pages/business-loan.html">Business Loans Page</a></li>
+            <li><a href="pages/mortgage-loan.html">Mortgage Loans (LAP) Page</a></li>
+            <li><a href="pages/vehicle-loan.html">Vehicle Loans Page</a></li>
+            <li><a href="pages/education-loan.html">Education Loans Page</a></li>
+            <li><a href="pages/gold-loan.html">Gold Loans Page</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <h4>Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Greenvill</a></li>
+            <li><a href="#journey">Loan Journey</a></li>
+            <li><a href="#calculator">EMI Calculator</a></li>
+            <li><a href="#savings">Savings Calculator</a></li>
+            <li><a href="blog/index.html">Financial Blog Hub</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact & Location</a></li>
+            <li><a href="admin.html" style="color: var(--accent);">Admin Portal Login</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div>
+          <h4>Trichy Office & Contact</h4>
+          <p style="font-size: 0.9rem; color: #9EAF9F; margin-bottom: 12px;">
+            Thillai Nagar Main Road, Trichy - 620018.<br>
+            Phone: +91 98765 43210<br>
+            Email: contact@greenvillassociates.com
+          </p>
+          <div style="margin-top: 16px;">
+            <a href="https://maps.google.com" target="_blank" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.1); color: #FFFFFF; border-color: rgba(255,255,255,0.2);">Open Location Map</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Greenvill Associates V2. All Rights Reserved.</div>
+        <div>Designed for Luxury Corporate Banking Advisory.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Floating Action Bar (Always visible) -->
+  <div class="floating-action-bar">
+    <a href="tel:+919876543210" class="btn btn-secondary btn-sm" style="box-shadow: none;">Call Now</a>
+    <a href="https://wa.me/919876543210" target="_blank" class="btn btn-accent btn-sm">WhatsApp Us</a>
+    <button class="btn btn-primary btn-sm" onclick="openApplyModal('Floating Bar')">Apply Now</button>
+  </div>
+
+  <!-- Interactive Apply Modal Dialog -->
+  <div class="modal-overlay" id="applyModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalCloseBtn">&times;</button>
+      <h3 style="font-size: 1.6rem; margin-bottom: 6px; color: var(--primary-dark);">Quick Loan Application</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">Complete this form to receive instant rate quotes from 100+ banking partners.</p>
+
+      <form id="quickApplyForm">
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input type="text" class="form-input" placeholder="Your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Phone Number *</label>
+          <input type="tel" class="form-input" placeholder="Mobile number" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Loan Category</label>
+            <select class="form-select" id="modalLoanType">
+              <option value="Home Loan">Home Loan</option>
+              <option value="Personal Loan">Personal Loan</option>
+              <option value="Business Loan">Business Loan</option>
+              <option value="Mortgage Loan">Mortgage Loan</option>
+              <option value="Vehicle Loan">Vehicle Loan</option>
+              <option value="Education Loan">Education Loan</option>
+              <option value="Gold Loan">Gold Loan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Loan Amount Required</label>
+            <input type="text" class="form-input" placeholder="e.g. ₹30,00,000" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 10px;">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic File -->
+  <script src="js/main.js"></script>
+</body>
+</html>
