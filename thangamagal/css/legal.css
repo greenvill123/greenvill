@@ -1,0 +1,17 @@
+/* Legal pages (Privacy Policy / Terms & Conditions) — supplements style.css */
+
+.legal-body ol { padding-left: 22px; color: var(--muted); }
+.legal-body strong { color: var(--ink); }
+.legal-body a { color: var(--maroon); text-decoration: underline; text-underline-offset: 3px; }
+.legal-body a:hover { color: var(--gold); }
+
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--maroon);
+}
+.legal-back svg { width: 14px; height: 14px; }
