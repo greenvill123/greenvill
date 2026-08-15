@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greenvill CRM — Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body class="login-body">
+
+  <div class="login-shell">
+    <div class="login-visual">
+      <div class="mark">GV</div>
+      <h2>Every loan file,<br>one calm pipeline.</h2>
+      <p>Customers, banks, follow-ups and commissions — tracked in one place for Greenvill Associates.</p>
+      <div class="stat-row">
+        <div><b>4</b><span>Bank partners</span></div>
+        <div><b>9</b><span>Modules</span></div>
+        <div><b>100%</b><span>Paperless goal</span></div>
+      </div>
+    </div>
+
+    <div class="login-form-side">
+      <h1>Welcome back</h1>
+      <div class="sub">Sign in to your Greenvill CRM workspace</div>
+
+      <div class="login-error" id="loginError"></div>
+
+      <form id="loginForm">
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" placeholder="username" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required>
+        </div>
+        <button class="btn btn-primary login-submit" type="submit">
+          <i data-lucide="log-in"></i> Sign in
+        </button>
+      </form>
+
+      <div class="login-foot">Greenvill CRM v1.0 · Built for Greenvill Associates</div>
+    </div>
+  </div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+  Store.seed();
+  if(Session.get()){ window.location.href = 'pages/dashboard.html'; }
+
+  lucide.createIcons();
+
+  const form = document.getElementById('loginForm');
+  const errBox = document.getElementById('loginError');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errBox.classList.remove('show');
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    const username = form.username.value.trim();
+    const password = form.password.value;
+
+    const res = await Auth.login(username, password);
+    btn.disabled = false;
+
+    if(res.ok){
+      window.location.href = 'pages/dashboard.html';
+    } else {
+      errBox.textContent = res.error || 'Login failed';
+      errBox.classList.add('show');
+    }
+  });
+</script>
+</body>
+</html>
