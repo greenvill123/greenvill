@@ -32,19 +32,25 @@ const Session = {
 
 const Auth = {
   async login(username, password){
-    const res = await Api.request('/login', { username, password });
-    if(res.ok) Session.set(res.user);
-    return res;
+    try {
+      const res = await Api.request('/login', { username, password });
+      if(res && res.ok) Session.set(res.user);
+      return res;
+    } catch(err) {
+      return { ok: false, error: err.message || 'Unable to connect to backend server' };
+    }
   },
   logout(){
     const s = Session.get();
     if(s) Store.log?.(s.username, 'Logged out');
     Session.clear();
-    window.location.href = '/index.html';
+    const isPages = window.location.pathname.includes('/pages/');
+    window.location.href = isPages ? '../index.html' : 'index.html';
   },
   guard(){
     if(!Session.get()){
-      window.location.href = '/index.html';
+      const isPages = window.location.pathname.includes('/pages/');
+      window.location.href = isPages ? '../index.html' : 'index.html';
     }
   },
 };

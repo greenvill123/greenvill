@@ -11,10 +11,10 @@
  *   3. Flip MODE to "apps-script".
  * Nothing else in the app needs to change — api.js talks to both the same way.
  */
-window.GREENVILL_CONFIG = {
+window.GREENVILL_CONFIG = Object.assign({
   MODE: "apps-script",
   APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzrO4Hr02vJXXDsi6pQYD8SdEwGfqMXHMEU0t5-jbAUT7cGuptr5DyUL0Cm6Q1hdpc2/exec",
   APP_NAME: "Greenvill CRM",
   COMPANY: "Greenvill Associates",
   CURRENCY: "INR",
-};
+}, window.GREENVILL_CONFIG || {});

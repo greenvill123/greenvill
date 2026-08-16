@@ -45,7 +45,7 @@ function renderShell(activeKey, pageTitle, pageSub){
       <aside class="sidebar">
         <div class="sidebar-brand">
           <div class="mark">GV</div>
-          <div>Greenvill CRM<small>${window.GREENVILL_CONFIG.COMPANY}</small></div>
+          <div>Greenvill CRM<small>${window.GREENVILL_CONFIG?.COMPANY || 'Greenvill Associates'}</small></div>
         </div>
         <nav class="nav-group">${navHtml}</nav>
         <div class="sidebar-foot">v1.0</div>

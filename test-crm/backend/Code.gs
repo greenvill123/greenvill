@@ -24,7 +24,9 @@ const SCHEMA = {
   Users: {
     headers: ['UserID', 'Username', 'Password', 'Name', 'Role', 'Status', 'LastLogin'],
     initialData: [
-      ['USR-001', 'admin', 'admin123', 'Admin User', 'Admin', 'Active', '']
+      ['USR-001', 'admin', 'admin123', 'Govindhasamy K', 'admin', 'Active', ''],
+      ['USR-002', 'manager', 'manager123', 'Priya R', 'manager', 'Active', ''],
+      ['USR-003', 'agent', 'agent123', 'Suresh M', 'agent', 'Active', '']
     ]
   },
   Customers: {
@@ -94,13 +96,26 @@ function setupDatabase() {
     }
   });
 
+  // Ensure default demo users (admin, manager, agent) exist in Users sheet
+  const usersSheet = ss.getSheetByName('Users');
+  if (usersSheet && usersSheet.getLastRow() >= 1) {
+    const existingUsers = usersSheet.getDataRange().getValues();
+    const usernames = existingUsers.slice(1).map(function(r) { return String(r[1]).toLowerCase().trim(); });
+    
+    SCHEMA.Users.initialData.forEach(function(u) {
+      if (!usernames.includes(String(u[1]).toLowerCase().trim())) {
+        usersSheet.appendRow(u);
+      }
+    });
+  }
+
   // Clean up default Sheet1 if database tabs are created
   const sheet1 = ss.getSheetByName('Sheet1');
   if (sheet1 && ss.getSheets().length > 1) {
     try { ss.deleteSheet(sheet1); } catch(e) {}
   }
   
-  return 'Database setup complete! All tabs, headers, and admin user (admin/admin123) are ready.';
+  return 'Database setup complete! All tabs, headers, and users (admin, manager, agent) are ready.';
 }
 
 function doGet(e){
@@ -233,9 +248,16 @@ function deleteRow(name, idField, id){
 
 function login(payload){
   const users = readSheet('Users');
-  const u = users.find(x => String(x.Username).trim() === String(payload.username).trim() && String(x.Password).trim() === String(payload.password).trim() && String(x.Status).trim() === 'Active');
+  const inputUser = String(payload.username || '').trim().toLowerCase();
+  const inputPass = String(payload.password || '').trim();
+  
+  const u = users.find(function(x) {
+    return String(x.Username || '').trim().toLowerCase() === inputUser && 
+           String(x.Password || '').trim() === inputPass && 
+           String(x.Status || '').trim().toLowerCase() === 'active';
+  });
   if(!u) return { ok:false, error:'Invalid username or password' };
-  return { ok:true, user:{ id:u.UserID, username:u.Username, name:u.Name, role:u.Role } };
+  return { ok:true, user:{ id:u.UserID, username:u.Username, name:u.Name, role:String(u.Role).toLowerCase() } };
 }
 
 function readSettings(){

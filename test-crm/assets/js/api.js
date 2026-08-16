@@ -8,9 +8,20 @@
  * Callers never need to know which mode is active.
  */
 const Api = (() => {
-  const cfg = window.GREENVILL_CONFIG;
+  const DEFAULT_CONFIG = {
+    MODE: "apps-script",
+    APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzrO4Hr02vJXXDsi6pQYD8SdEwGfqMXHMEU0t5-jbAUT7cGuptr5DyUL0Cm6Q1hdpc2/exec",
+    APP_NAME: "Greenvill CRM",
+    COMPANY: "Greenvill Associates",
+    CURRENCY: "INR",
+  };
+
+  function getConfig() {
+    return window.GREENVILL_CONFIG || DEFAULT_CONFIG;
+  }
 
   async function callAppsScript(path, payload){
+    const cfg = getConfig();
     const res = await fetch(cfg.APPS_SCRIPT_URL, {
       method:'POST',
       headers:{ 'Content-Type':'text/plain;charset=utf-8' }, // avoids CORS preflight on Apps Script
@@ -25,6 +36,7 @@ const Api = (() => {
   }
 
   async function request(path, payload = {}){
+    const cfg = getConfig();
     if(cfg.MODE === 'apps-script'){
       return callAppsScript(path, payload);
     }
@@ -36,13 +48,19 @@ const Api = (() => {
     Store.seed();
     switch(path){
       case '/login': {
-        const u = Store.get('Users').find(x => x.Username === payload.username);
-        if(!u || u.Password !== payload.password || u.Status !== 'Active') {
+        const inputUser = String(payload.username || '').trim().toLowerCase();
+        const inputPass = String(payload.password || '').trim();
+        const u = Store.get('Users').find(x => 
+          String(x.Username || '').trim().toLowerCase() === inputUser && 
+          String(x.Password || '').trim() === inputPass && 
+          String(x.Status || '').trim().toLowerCase() === 'active'
+        );
+        if(!u) {
           return { ok:false, error:'Invalid username or password' };
         }
         Store.update('Users','UserID', u.UserID, { LastLogin:new Date().toISOString() });
         Store.log(u.Username, 'Logged in');
-        return { ok:true, user:{ id:u.UserID, username:u.Username, name:u.Name, role:u.Role } };
+        return { ok:true, user:{ id:u.UserID, username:u.Username, name:u.Name, role:String(u.Role).toLowerCase() } };
       }
 
       case '/customers':
