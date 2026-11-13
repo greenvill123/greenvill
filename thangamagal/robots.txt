@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://thangamagalgoldloan.com/sitemap.xml
